@@ -13,7 +13,7 @@ session_start();
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- <link rel="stylesheet" type="text/css" href="fonts/style.css"> -->	
+    <!-- <link rel="stylesheet" type="text/css" href="fonts/style.css"> --> 
     <link rel="shortcut icon" type="image/x-icon" href="http://localhost/esp32/paginasBootstrap/gt_icon.ico">
     <!-- caracteres-->
     <meta charset="utf-8">
@@ -56,7 +56,7 @@ session_start();
 </style>
 <body >
     <!-- Start Menu Gigaticket-->
-  	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <!-- Navbar content -->
      <a class="navbar-brand" href="#">
       <img src="http://localhost/esp32/paginasBootstrap/gt_icon.ico" width="30" height="30" class="d-inline-block align-top rounded img-fluid" alt="Gigaticket">
@@ -69,7 +69,7 @@ session_start();
     </button>
     
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
-    	
+      
       <ul class="navbar-nav mr-auto ">
         <li class="nav-item active">
           <a class="nav-link" href="searchSpace.php"><strong>Search Space</strong> <span class="sr-only">(current)</span></a>
@@ -154,7 +154,7 @@ session_start();
         </div>
         <div class="col-lg-3">
           <div class="form-group">
-            <label for="fecha_f">Fecha final:</label>
+            <label for="fecha_f">Fecha egreso:</label>
             <input type="date" class="form-control" id="fecha_f" placeholder="Ingresa fecha" name="fecha_f" required>
             <div class="valid-feedback">Válido.</div>
             <div class="invalid-feedback">Ingresa una fecha correcta.</div>
@@ -169,14 +169,16 @@ session_start();
                      <input type="time" class="form-control" id="hour_i" placeholder="Ingresa hora" name="hour_i" required>
                      <div class="valid-feedback">Válido.</div>
                      <div class="invalid-feedback">Ingresa una hora correcta.</div>
+
                   </div>
         </div>
         <div class="col-lg-3">
            <div class="form-group">
-                     <label for="hour_f">Hora final:</label>
+                     <label for="hour_f">Hora egreso:</label>
                      <input type="time" class="form-control" id="hour_f" placeholder="Ingresa hora" name="hour_f" required>
                      <div class="valid-feedback">Válido.</div>
                      <div class="invalid-feedback">Ingresa una hora correcta.</div>
+                     <div id="wrongHora" name="wrongHora" class="text-danger invisible ">pero por favor ingresa una hora de egreso mayor que la hora de ingreso</div>
                   </div>
         </div>
         <div class="col-lg-3 text-center">
@@ -213,50 +215,68 @@ session_start();
         }
         else {
           var fecha_i = $('#fecha_i').val();
-    var fecha_f = $('#fecha_f').val();
-    var hora_i = $('#hour_i').val();
-    var hora_f = $('#hour_f').val();
-    var nombre_espacio =  $('#tipo_habitacion option:selected').val();
-    if ((fecha_i > fecha_f) || (hora_i > hora_f) ) {
+          var fecha_f = $('#fecha_f').val();
+          var hora_i = $('#hour_i').val();
+          var hora_f = $('#hour_f').val();
+          var nombre_espacio =  $('#tipo_habitacion option:selected').val();
+    if (fecha_i > fecha_f ) {
            console.log("error wrong info");
-           $('#wrongFecha').removeClass("invisible");
-           $('#wrongFecha').addClass("visible");
+           $('#wrongFecha').removeClass("invisible").addClass("visible");
+           $('#wrongHora').removeClass("visible").addClass("invisible");
+           event.preventDefault();
+           event.stopPropagation();
+           
+           var msj="";
+            msj +=`
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Hola SaulMa!</strong> ingresa una fecha inicial menor que la fecha final
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                                `;
+                $('#alertSS').empty().append(msj);
+              
+
+        } 
+        else if ((hora_i > hora_f)) {
+
+           console.log("error wrong info");
+           $('#wrongFecha').removeClass("visible").addClass("invisible");
+           $('#wrongHora').removeClass("invisible").addClass("visible");
            event.preventDefault();
            event.stopPropagation();
            //console.log(hora_i);
            var msj="";
             msj +=`
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Hola SaulMa!</strong> ingresa una fecha y/o hora inicial menor que la final
+                        <strong>Hola SaulMa!</strong> ingresa una hora de egreso mayor que la hora de ingreso
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                                 `;
-                $('#alertSS').empty();
-                $('#alertSS').append(msj);
-              
-
-        } else {
+                $('#alertSS').empty().append(msj);  
+        
+        } 
+        else {
           console.log("ok processing info");
           $('#alertSS').empty();
-          $('#wrongFecha').removeClass("visible");
-           $('#wrongFecha').addClass("invisible");
+          $('#wrongFecha').removeClass("visible").addClass("invisible");
+          $('#wrongHora').removeClass("visible").addClass("invisible");
           event.preventDefault();
-      //console.log(nombre_espacio);
-      //console.log(hora_i);
-      var datos= {
-            'fecha_i': fecha_i,
-            'fecha_f': fecha_f,
-            'hora_i': hora_i,
-            'hora_f': hora_f,
-            'nombre_espacio': nombre_espacio
-            };
-      $.post('searchSpace2DB.php', datos, function(respuesta){
-        respuesta= JSON.parse(respuesta);
-        console.log(respuesta);
-      });   
-    }
+          var datos= {
+                'fecha_i': fecha_i,
+                'fecha_f': fecha_f,
+                'hora_i': hora_i,
+                'hora_f': hora_f,
+                'nombre_espacio': nombre_espacio
+                };
+          $.post('searchSpace2DB.php', datos, function(respuesta){
+            respuesta= JSON.parse(respuesta);
+            console.log(respuesta);
+          });   
+        }
         }
         form.classList.add('was-validated');
       }, false);
