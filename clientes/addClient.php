@@ -155,7 +155,7 @@ session_start();
                   </div>
                   <div class="form-group">
                      <label for="hour_i">Hora ingreso:</label>
-                     <input type="time" class="form-control" id="hour_i" placeholder="Ingresa hora" name="hour" required>
+                     <input type="time" class="form-control" id="hour_i" placeholder="Ingresa hora" name="hour_i" required>
                      <div class="valid-feedback">Válido.</div>
                      <div class="invalid-feedback">Ingresa una hora correcta.</div>
                   </div>                
@@ -179,7 +179,7 @@ session_start();
                   </div>
                   <div class="form-group">
                      <label for="hour_f">Hora egreso:</label>
-                     <input type="time" class="form-control" id="hour_f" placeholder="Ingresa hora" name="hour" required>
+                     <input type="time" class="form-control" id="hour_f" placeholder="Ingresa hora" name="hour_f" required>
                      <div class="valid-feedback">Válido.</div>
                      <div class="invalid-feedback">Ingresa una hora correcta.</div>
                      <div id="wrongHora" name="wrongHora" class="text-danger invisible ">pero por favor ingresa una hora de egreso mayor que la hora de ingreso</div>
@@ -252,12 +252,13 @@ session_start();
               
 
         } 
-        else if ((hora_i > hora_f)) {
+        else if ((hour_i > hour_f)) {
 
            console.log("error wrong info");
            $('#wrongFecha').removeClass("visible").addClass("invisible");
            $('#wrongHora').removeClass("invisible").addClass("visible");
-           event.preventDefault().stopPropagation();
+           event.preventDefault()
+           event.stopPropagation();
            //console.log(hora_i);
            var msj="";
             msj +=`
@@ -290,9 +291,39 @@ session_start();
             'hour_f': hour_f
           };
           $.post('../db/addClientDB.php', datos, function(respuesta){
-            respuesta= JSON.parse(respuesta);
-            console.log(respuesta);  
-          });   
+      respuesta = JSON.parse(respuesta);
+      console.log(respuesta);
+      if (respuesta[0]['respuesta'] == true) {
+            
+              var msj="";
+              msj +=`
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Hola SaulMa!</strong> Has agregado un cliente.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                            `;
+                $('#alertAC').empty();
+                $('#alertAC').append(msj);
+            }
+                else {
+                  var msj="";
+                msj +=`
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <strong>Hola SaulMa!</strong> Ha ocurrido un error el cliente no se ha guardado correctamente.<br>
+                          Este correo ya  esta vinculado a alguien mas
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                              `;
+                $('#alertAC').empty();
+                $('#alertAC').append(msj);
+                }
+         
+          });
+             
         }
         }        
 

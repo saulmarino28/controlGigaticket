@@ -18,6 +18,31 @@ $("#rfid").val(lectId['rfid']);
 $(document).ready(function(){
   console.log("hola");
   /*
+  $('#addClient').submit(function(e){
+    e.preventDefault();
+    var name= $('#name').val();
+    var lastName= $('#lastName').val();
+    var email= $('#email').val();
+    var phone= $('#phone').val();
+    var hab= $('#hab').val();
+    var rfid= $('#rfid').val();
+    var fecha_i= $('#fecha_i').val();
+    var fecha_f= $('#fecha_f').val();
+    var hour_i= $('#hour_i').val();
+    var hour_f= $('#hour').val();
+
+    var datos = {
+            'name': name,
+            'lastName': lastName,
+            'email': email,
+            'phone': phone,
+            'hab': hab,
+            'fecha_i': fecha_i,
+            'fecha_f': fecha_f,
+            'rfid': rfid,
+            'hour_i': hour_i,
+            'hour_f': hour_f
+          };
     $.post('../db/addClientDB.php', datos, function(respuesta){
       respuesta = JSON.parse(respuesta);
       console.log(respuesta);
@@ -51,6 +76,7 @@ $(document).ready(function(){
                 }
          
     });
+
+  });  
     */
-    
 });
