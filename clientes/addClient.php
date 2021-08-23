@@ -172,7 +172,7 @@ session_start();
 
             <div class="form-group">
                      <label for="fecha_f">Fecha de egreso:</label>
-                     <input type="date" class="form-control" id="fecha_f" placeholder="4 dias, 1 mes" name="fecha_f" min="<?php echo date("Y-m-d");?>" max="2100-12-31" value="<?php echo date("Y-m-d");?>" required>
+                     <input type="date" class="form-control" id="fecha_f" placeholder="4 dias, 1 mes" name="fecha_f"  required>
                      <div class="valid-feedback">Válido.</div>
                      <div class="invalid-feedback">Por favor escribe una fecha de egreso correcta.</div>
                      <div id="wrongFecha" name="wrongFecha" class="text-danger invisible ">pero por favor ingresa una fecha de egreso mayor que la fecha de ingreso</div>
@@ -203,7 +203,7 @@ session_start();
 </div>
 <!--finish form -->
 <br>
-<script type="text/javascript">
+<script>
   
 
 // Disable form submissions if there are invalid fields
@@ -232,14 +232,14 @@ session_start();
           var hour_i= $('#hour_i').val();
           var hour_f= $('#hour_f').val();
 
-    if (fecha_i > fecha_f ) {
-           console.log("error wrong info");
-           $('#wrongFecha').removeClass("invisible").addClass("visible");
-           $('#wrongHora').removeClass("visible").addClass("invisible");
-           event.preventDefault();
-           event.stopPropagation();
-           
-           var msj="";
+          if (fecha_i > fecha_f ) {
+            console.log("error wrong info");
+            $('#wrongFecha').removeClass("invisible").addClass("visible");
+            $('#wrongHora').removeClass("visible").addClass("invisible");
+            event.preventDefault();
+            event.stopPropagation();
+             
+             var msj="";
             msj +=`
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>Hola SaulMa!</strong> ingresa una fecha inicial menor que la fecha final
@@ -257,8 +257,7 @@ session_start();
            console.log("error wrong info");
            $('#wrongFecha').removeClass("visible").addClass("invisible");
            $('#wrongHora').removeClass("invisible").addClass("visible");
-           event.preventDefault();
-           event.stopPropagation();
+           event.preventDefault().stopPropagation();
            //console.log(hora_i);
            var msj="";
             msj +=`
@@ -292,10 +291,7 @@ session_start();
           };
           $.post('../db/addClientDB.php', datos, function(respuesta){
             respuesta= JSON.parse(respuesta);
-            console.log(respuesta);
-
-            
-            
+            console.log(respuesta);  
           });   
         }
         }        
