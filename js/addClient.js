@@ -28,8 +28,8 @@ $(document).ready(function(){
 		var rfid= $('#rfid').val();
 		var fecha_i= $('#fecha_i').val();
 		var fecha_f= $('#fecha_f').val();
-		var hour= $('#hour').val();
-		
+		var hour_i= $('#hour_i').val();
+		var hour_f= $('#hour_f').val();
 
 		var datos = {
 			'name': name,
@@ -40,7 +40,8 @@ $(document).ready(function(){
 			'fecha_i': fecha_i,
 			'fecha_f': fecha_f,
 			'rfid': rfid,
-			'hour': hour
+			'hour_i': hour_i,
+			'hour_f': hour_f
 		};
 		//console.log(datos);
 		

@@ -154,8 +154,8 @@ session_start();
                      <div class="invalid-feedback">Ingresa una fecha correcta.</div>
                   </div>
                   <div class="form-group">
-                     <label for="hour">Hora:</label>
-                     <input type="time" class="form-control" id="hour" placeholder="Ingresa hora" name="hour" required>
+                     <label for="hour_i">Hora ingreso:</label>
+                     <input type="time" class="form-control" id="hour_i" placeholder="Ingresa hora" name="hour" required>
                      <div class="valid-feedback">Válido.</div>
                      <div class="invalid-feedback">Ingresa una hora correcta.</div>
                   </div>                
@@ -175,6 +175,14 @@ session_start();
                      <input type="date" class="form-control" id="fecha_f" placeholder="4 dias, 1 mes" name="fecha_f" min="<?php echo date("Y-m-d");?>" max="2100-12-31" value="<?php echo date("Y-m-d");?>" required>
                      <div class="valid-feedback">Válido.</div>
                      <div class="invalid-feedback">Por favor escribe una fecha de egreso correcta.</div>
+                     <div id="wrongFecha" name="wrongFecha" class="text-danger invisible ">pero por favor ingresa una fecha de egreso mayor que la fecha de ingreso</div>
+                  </div>
+                  <div class="form-group">
+                     <label for="hour_f">Hora egreso:</label>
+                     <input type="time" class="form-control" id="hour_f" placeholder="Ingresa hora" name="hour" required>
+                     <div class="valid-feedback">Válido.</div>
+                     <div class="invalid-feedback">Ingresa una hora correcta.</div>
+                     <div id="wrongHora" name="wrongHora" class="text-danger invisible ">pero por favor ingresa una hora de egreso mayor que la hora de ingreso</div>
                   </div>     
                                          
           </div>
