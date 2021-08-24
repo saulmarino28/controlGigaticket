@@ -10,7 +10,8 @@
 	    $hab = (int)$_POST["hab"];
 	    $fecha_i=$_POST["fecha_i"];
 	    $fecha_f=$_POST["fecha_f"];
-	    $hour = $_POST["hour"];
+	    $hour_i = $_POST["hour_i"];
+	    $hour_f = $_POST["hour_f"];
 
 	    $conexion = @new mysqli('localhost', 'root', '', 'wifi access');
 	    if($conexion->connect_errno){
@@ -32,7 +33,7 @@
 	        	exit();
 	        }
          
-	        $querys = "INSERT INTO clientes (Nombre, Apellido, Correo, Telefono, Rfid, Habitacion, Fecha_ingreso, Fecha_egreso, Hora) values ('$name', '$lastName','$email', '$phone', '$rfid', '$hab', '$fecha_i', '$fecha_f', '$hour')";
+	        $querys = "INSERT INTO clientes (Nombre, Apellido, Correo, Telefono, Rfid, Habitacion, Fecha_ingreso, Fecha_egreso, Hora_ingreso, Hora_egreso) values ('$name', '$lastName','$email', '$phone', '$rfid', '$hab', '$fecha_i', '$fecha_f', '$hour_i', '$hour_f')";
 
 	        if($conexion->query($querys) == FALSE) {
 	          /* 	echo " error consulta <br>";

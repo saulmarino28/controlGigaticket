@@ -219,7 +219,9 @@ session_start();
           var hora_i = $('#hour_i').val();
           var hora_f = $('#hour_f').val();
           var nombre_espacio =  $('#tipo_habitacion option:selected').val();
-    if (fecha_i > fecha_f ) {
+
+          if (fecha_i > fecha_f ) {
+
            console.log("error wrong info");
            $('#wrongFecha').removeClass("invisible").addClass("visible");
            $('#wrongHora').removeClass("visible").addClass("invisible");
