@@ -8,11 +8,11 @@ $(document).ready(function() {
 		var texto = "";
             
         texto += `
-        <div class="card-body">
-			<h5 class="card-title" id="name">${res[0]['name']} ${res[0]['lastName']}</h5>
-			<p class="card-text" id="lastName"></p>
-		</div>
-			<ul class="list-group list-group-flush h5">
+       
+		
+		<ul class="list-group list-group-flush h5">
+			<li class="list-group-item bg-info"></li>
+			<li class= "list-group-item bg-info" id="name">${res[0]['name']} ${res[0]['lastName']}</li>
 			<li class="list-group-item  bg-info" id="phone">${res[0]['phone']}</li>
 			<li class="list-group-item  bg-info " id="email">${res[0]['email']}</li>
 			<li class="list-group-item bg-info" id="userName">${res[0]['userName']}</li>
