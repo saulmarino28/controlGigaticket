@@ -93,16 +93,7 @@ session_start();
 					  <div class="container" id="myprofile">
 					  	
 					  </div>
-					  <div class="card-body">
-					    <h5 class="card-title">saulma</h5>
-					    <p class="card-text">so handsome, so cool, so fresh, thankfull that i didn'tend up  in a coffin something we see too often.</p>
-					  </div>
-					  <ul class="list-group list-group-flush h5">
-					    <li class="list-group-item  bg-info">5545270218</li>
-					    <li class="list-group-item  bg-info ">saulinho.smc51@gmail.com</li>
-					    <li class="list-group-item bg-info">saul28</li>
-					    <li class="list-group-item bg-info">Admin</li>
-					  </ul>
+					  <div class="container" id="cardProfile"></div>
 
 					  <div class="card-body d-flex justify-content-between ">
 					    <a href="../index.php" class="card-link text-warning">Administrar</a>
@@ -124,9 +115,8 @@ session_start();
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../js/MyProfile.js"></script>
-
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/MyProfile.js"></script>
 </body>
 </html>
 

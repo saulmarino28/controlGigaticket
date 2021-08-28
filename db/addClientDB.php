@@ -29,8 +29,6 @@
 
                 echo json_encode($respuesta);     
 	        	exit();
-
-	        	exit();
 	        }
          
 	        $querys = "INSERT INTO clientes (Nombre, Apellido, Correo, Telefono, Rfid, Habitacion, Fecha_ingreso, Fecha_egreso, Hora_ingreso, Hora_egreso) values ('$name', '$lastName','$email', '$phone', '$rfid', '$hab', '$fecha_i', '$fecha_f', '$hour_i', '$hour_f')";
