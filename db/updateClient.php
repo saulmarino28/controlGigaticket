@@ -9,7 +9,8 @@
     $hab = $_POST['hab'];
     $fecha_i = $_POST['fecha_i'];
     $fecha_f = $_POST['fecha_f'];
-    $hour = $_POST['hour'];
+    $hour_i = $_POST['hour_i'];
+    $hour_f = $_POST['hour_f'];
     
    $conexion = @new mysqli('localhost', 'root', '', 'wifi access');
 
@@ -32,7 +33,7 @@
 
 
           // echo "conexion exito <br>";
-        $querys = " UPDATE  clientes SET Nombre= '$name', Apellido='$lastName', Correo='$email', Telefono='$phone', Rfid='$rfid', Fecha_egreso='$fecha_f', Fecha_ingreso='$fecha_i', Hora='$hour', Habitacion='$hab'  WHERE IdCliente= '$id'  ";
+        $querys = " UPDATE  clientes SET Nombre= '$name', Apellido='$lastName', Correo='$email', Telefono='$phone', Rfid='$rfid', Fecha_egreso='$fecha_f', Fecha_ingreso='$fecha_i', Hora_ingreso='$hour_i', Hora_egreso = '$hour_f', Habitacion='$hab'  WHERE IdCliente= '$id'  ";
            
 
         $consulta = $conexion->query($querys);

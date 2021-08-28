@@ -41,7 +41,8 @@ $(document).ready(function(){
                             <td >${respuesta[i]['hab']}</td>
                             <td >${respuesta[i]['fecha_i']}</td>
                             <td >${respuesta[i]['fecha_f']}</td>
-                            <td >${respuesta[i]['hour']}</td>
+                            <td >${respuesta[i]['hour_i']}</td>
+                            <td >${respuesta[i]['hour_f']}</td>
                             <td ><button  class="btn btn-outline-info  btn-sm edit" name="btn-edi" id = "btn-edit">Editar</button></td>
                         </tr>`;                   
                             
@@ -81,7 +82,8 @@ $(document).on('click', '#btn-edit', function(){
         $('#hab').val(data[0]['hab']);
         $('#fecha_i').val(data[0]['fecha_i']);
         $('#fecha_f').val(data[0]['fecha_f']);
-        $('#hour').val(data[0]['hour']);
+        $('#hour_i').val(data[0]['hour_i']);
+        $('#hour_f').val(data[0]['hour_f']);
 
  
    });
@@ -99,7 +101,8 @@ $('#actualizar').on('click',function(){
         var hab = $('#hab').val();
         var fecha_i = $('#fecha_i').val();
         var fecha_f = $('#fecha_f').val();
-        var hour = $('#hour').val();
+        var hour_i = $('#hour_i').val();
+        var hour_f = $('#hour_f').val();
 
         var datos_enviar = {
             'id' : id,
@@ -111,7 +114,8 @@ $('#actualizar').on('click',function(){
             'hab':hab,
             'fecha_i': fecha_i,
             'fecha_f': fecha_f,
-            'hour': hour
+            'hour_i': hour_i,
+            'hour_f': hour_f
         };
        // console.log(datos_enviar);
        $.post('../db/updateClient.php', datos_enviar, function(respuesta){
@@ -172,7 +176,8 @@ function obtenerDatos(){
                     <td >${respuesta[i]['hab']}</td>
                     <td >${respuesta[i]['fecha_i']}</td>
                     <td >${respuesta[i]['fecha_f']}</td>
-                    <td >${respuesta[i]['hour']}</td>
+                    <td >${respuesta[i]['hour_i']}</td>
+                    <td >${respuesta[i]['hour_f']}</td>
                     <td ><button  class="btn btn-outline-info  btn-sm edit" name="btn-edi" id = "btn-edit">Editar</button></td>
                 </tr>`;                   
                     
