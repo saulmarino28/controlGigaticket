@@ -36,8 +36,8 @@ $(document).ready(function(){
                             <td >${respuesta[i]['hab']}</td>
                             <td >${respuesta[i]['fecha_i']}</td>
                             <td >${respuesta[i]['fecha_f']}</td>
-                            <td >${respuesta[i]['hour']}</td>
-                           
+                            <td >${respuesta[i]['hour_i']}</td>
+                            <td >${respuesta[i]['hour_f']}</td>
                         </tr>`;                   
                             
                         }
@@ -77,7 +77,8 @@ $(document).ready(function(){
                     <td>${respuesta[i]['hab']}</td>
                     <td>${respuesta[i]['fecha_i']}</td>
                     <td>${respuesta[i]['fecha_f']}</td>
-                    <td>${respuesta[i]['hour']}</td>
+                    <td>${respuesta[i]['hour_i']}</td>
+                    <td>${respuesta[i]['hour_f']}</td>
                 </tr>`;
                 
             }

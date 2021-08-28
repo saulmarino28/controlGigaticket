@@ -105,7 +105,9 @@ session_start();
         <div class="modal-dialog  ">
           <div class="modal-content bg-info border-dark">
             <div class="modal-header">
-              <h5 class="modal-title" id="editModalLabel">Editar Usuario</h5>
+              <h5 class="modal-title" id="editModalLabel">
+                Editar Usuario
+              </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -149,36 +151,44 @@ session_start();
                       <input type="number" class="form-control" id="hab" placeholder="" name="hab" required>
                       <div class="valid-feedback">Válido.</div>
                       <div class="invalid-feedback">El número de habitación debe tener de 3-10 dígitos.</div>
-                    </div> 
+                    </div>              
+                    <div class="form-group">
+                       <label for="rfid">Número de tarjeta: </label>
+                       <input type="text" class="form-control" id="rfid" placeholder="Ingresa tarjeta RFID" name="rfid" required>
+                       <div class="valid-feedback">Válido.</div>
+                       <div class="invalid-feedback">Por favor ingresa la terjeta RFID.</div>
+                    </div>
                     <div class="form-group">
                       <label for="fecha_i">Fecha de ingreso:</label>
                       <input type="date" class="form-control" id="fecha_i" placeholder="Ingresa fecha" name="fecha_i"  required>
                       <div class="valid-feedback">Válido.</div>
                       <div class="invalid-feedback">Ingresa una fecha correcta.</div>
-                    </div>               
-                      <div class="form-group">
-                         <label for="rfid">Número de tarjeta:</label>
-                         <input type="text" class="form-control" id="rfid" placeholder="Ingresa tarjeta RFID" name="rfid" required>
-                         <div class="valid-feedback">Válido.</div>
-                         <div class="invalid-feedback">Por favor ingresa la terjeta RFID.</div>
-                      </div>
                     </div>
-              <div class="col-sm-5">
-              <div class="form-group">
-                         <label for="fecha_f">Fecha de egreso:</label>
-                         <input type="date" class="form-control" id="fecha_f" placeholder="4 dias, 1 mes" name="fecha_f" min="<?php echo date("Y-m-d");?>" max="2100-12-31" value="<?php echo date("Y-m-d");?>" required>
-                         <div class="valid-feedback">Válido.</div>
-                         <div class="invalid-feedback">Por favor escribe una la fecha de egreso correcta .</div>
-                      </div>      
-                      <div class="form-group">
-                         <label for="hour">Hora de ingreso:</label>
-                         <input type="time" class="form-control" id="hour" placeholder="Ingresa fecha" name="hour" required>
-                         <div class="valid-feedback">Válido.</div>
-                         <div class="invalid-feedback">Ingresa una hora correcta.</div>
-                      </div>                       
-              </div>
-           </div>      
-       </form>
+                    <div class="form-group">
+                      <label for="hour_f">Hora de egreso:</label>
+                      <input type="time" class="form-control" id="hour_f" placeholder="Ingresa fecha" name="hour_f" required>
+                      <div class="valid-feedback">Válido.</div>
+                      <div class="invalid-feedback">Ingresa una hora correcta.</div>
+                    </div> 
+                  </div>
+
+                  <div class="col-sm-5">
+                    <div class="form-group">
+                      <label for="fecha_f">Fecha de egreso:</label>
+                      <input type="date" class="form-control" id="fecha_f" placeholder="4 dias, 1 mes" name="fecha_f" min="<?php echo date("Y-m-d");?>" max="2100-12-31" value="<?php echo date("Y-m-d");?>" required>
+                      <div class="valid-feedback">Válido.</div>
+                      <div class="invalid-feedback">Por favor escribe una la fecha de egreso correcta .</div>
+                    </div>      
+                    <div class="form-group">
+                      <label for="hour_i">Hora de ingreso:</label>
+                      <input type="time" class="form-control" id="hour_i" placeholder="Ingresa fecha" name="hour_i" required>
+                      <div class="valid-feedback">Válido.</div>
+                      <div class="invalid-feedback">Ingresa una hora correcta.</div>
+                    </div>  
+                  </div>
+
+                </div>      
+              </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
@@ -193,46 +203,45 @@ session_start();
 
     <!-- Modal finish -->
 
-<!--table start  -->
-<div class="container ">
-	    
-			<div class="container-fluid  mt-5 table-responsive-xl">
-			   <div class="row text-center">
-            <div class="col-sm-6 text-center">
-               <input class="form-control " id="myInput" type="text" placeholder="Search.."><br>     
-            </div>
-         </div>
-         <div class="row d-flex  ">
-            <div class="col-xl-12 text-center">
-                <table class="table table-primary table-hover table-bordered">
-                          <thead class="thead-dark text-center">
-                              <tr class="">
-                                  <th>ID</th>
-                                  <th>Nombre</th>
-                                  <th>Apellido</th>
-                                  <th>Correo</th>
-                                  <th>Teléfono</th>
-                                  <th>RFID</th>
-                                  <th>Habitación</th>
-                                  <th>Fecha ingreso</th>                                  
-                                  <th>Fecha egreso</th>
-                                  <th>Hora</th>
-                                  <th>Editar</th>
-
-                              </tr>
-                          </thead>
-                     <tbody class="text-center" id="tabla1">                         
-
-                      </tbody>
-                      
-                </table>
-            </div>
+    <!--table start  -->
+    <div class="container ">  
+			<div class="container-xl  mt-5 table-responsive-xl">
+			  <div class="row text-center">
+          <div class="col-sm-6 text-center">
+            <input class="form-control " id="myInput" type="text" placeholder="Search.."><br>     
+          </div>
         </div>
-		   </div>
-       <div id="res" class="text-center">
+        <div class="row d-flex  ">
+          <div class="col-xl-12 text-center">
+            <table class="table table-primary table-hover table-bordered">
+              <thead class="thead-dark text-center">
+                <tr class="">
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Correo</th>
+                  <th>Teléfono</th>
+                  <th>RFID</th>
+                  <th>Hab</th>
+                  <th>Fecha ingreso</th>
+                  <th>Fecha egreso</th>
+                  <th>Hora ingreso</th>
+                  <th>Hora egreso</th>
+                  <th>Editar</th>
+                </tr>
+              </thead>
+              <tbody class="text-center" id="tabla1">                         
+
+              </tbody>          
+            </table>
+          </div>
+        </div>
+		  </div>
+      <div id="res" class="text-center">
          
-       </div>
-       <br>
+      </div>
+      <br>
+
       <!--boton actualizar start -->
       <div class="row justify-content-center m-2">
         <div class="col-sm-3 text-center">
@@ -247,25 +256,12 @@ session_start();
 <!-- Table finish -->
 <!--Finish container -->
 <br>
+
 <script>
 // Disable form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Get the forms we want to add validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
+
+
+
 </script>
   <!-- Finish Container-->  
 

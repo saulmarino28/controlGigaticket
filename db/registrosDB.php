@@ -62,8 +62,8 @@
                 'hab' => $dato['Habitacion'],
                 'fecha_i' => $dato['Fecha_ingreso'],
                 'fecha_f' => $dato['Fecha_egreso'],
-                'hour' => $dato['Hora']
-
+                'hour_i' => $dato['Hora_ingreso'],
+                'hour_f' => $dato['Hora_egreso']
                      ];
             
         }
