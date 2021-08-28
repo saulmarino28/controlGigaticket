@@ -123,12 +123,12 @@ session_start();
       <div class="row justify-content-center m-2">
         <div class="col-lg-3">
           <div class="form-group">
-            <label for="tipo_habitacion">Tipo de habitación:</label>
-            <select class="form-control " id="tipo_habitacion" name="tipo_habitacion">
+            <label for="spaces">Espacios:</label>
+            <select class="form-control " id="spaces" name="spaces">
               
             </select>
             <div class="valid-feedback">Válido.</div>
-            <div class="invalid-feedback">Ingresa una habitacion válida.</div>
+            <div class="invalid-feedback">Ingresa un espacio válido.</div>
           </div>             
         </div>
         <!--
@@ -274,7 +274,7 @@ session_start();
                 'hora_f': hora_f,
                 'nombre_espacio': nombre_espacio
                 };
-          $.post('searchSpace2DB.php', datos, function(respuesta){
+          $.post('../db/searchSpaceDB.php', datos, function(respuesta){
             respuesta= JSON.parse(respuesta);
             console.log(respuesta);
           });   
@@ -295,5 +295,6 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../js/searchSpace.js"></script>
+
 </body>
 </html>

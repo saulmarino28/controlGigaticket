@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 	//console.log("hola mundo");
-	$.get("SpacesDB.php", function(res){
+	$.get("../db/SpacesDB.php", function(res){
 		res = JSON.parse(res);
 		console.log(res);
 		var texto ="";
@@ -11,7 +11,7 @@ $(document).ready(function(){
 					`; 
 
 		}
-		$('#tipo_habitacion').append(texto);
+		$('#spaces').append(texto);
 	});
 
 	/*

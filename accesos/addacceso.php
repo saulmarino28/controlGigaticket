@@ -49,7 +49,7 @@ session_start();
     <!-- Navbar content -->
      <a class="navbar-brand" href="#">
       <img src="http://localhost/esp32/paginasBootstrap/gt_icon.ico" width="30" height="30" class="d-inline-block align-top rounded img-fluid" alt="Gigaticket">
-       <strong> Usuarios</strong>
+       <strong> Accesos</strong>
 
     </a>
     
@@ -61,10 +61,10 @@ session_start();
     	
       <ul class="navbar-nav mr-auto ">
         <li class="nav-item active">
-          <a class="nav-link" href="addClient.php"><strong>Agregar Usuario</strong> <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#"><strong>Acceso a Usuario</strong> <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../clientes.php"><strong>Atrás</strong></a>
+          <a class="nav-link" href="../accesos.php"><strong>Atrás</strong></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../index.php"><strong>Ir a inicio</strong></a>
@@ -75,18 +75,15 @@ session_start();
            <strong> Menu</strong>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Mi perfil</a>
+            <a class="dropdown-item" href="../menu/mi_perfil.php">Mi perfil</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Cerrar Sesión</a>
+            <a class="dropdown-item" href="../sesiones/cerrarSesionUGT.php">Cerrar Sesión</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Atrás</a>
+            <a class="dropdown-item" href="../accesos.php">Atrás</a>
           </div>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      
        <a class="navbar-brand" href="#">
       <img src="http://localhost/Prototipo/aragon.jpg" width="40" height="40" class="d-inline-block align-top rounded img-fluid mx-2" alt="fes aragon">
     </a>
@@ -99,100 +96,22 @@ session_start();
   	</div>
     <!-- Start alert status-->
 
-  <!-- Start Container Form Add Client-->
+  <!-- Start Container Access Client-->
   <div class="container pt-5 ">
-  <div class="row justify-content-center" >
-    <div class="col-md-9">
-      <div class="card">
-         
-    <div class="card-header bg-info ">
-      <h3 class=" text-center"> Agregar Usuario</h3>
-    </div>
-   <form method="POST" action="#" class="needs-validation my-2" id="addClient" novalidate>
-      <div class="row justify-content-center ">
-         <div class="col-sm-5">
-          <div class="form-group">
-                     <label for="name">Nombre:</label>
-                     <input type="text" class="form-control" id="name" placeholder="Ingresa Nombre" name="name" required>
-                     <div class="valid-feedback">Válido.</div>
-                     <div class="invalid-feedback">EL nombre de usuario debe tener de 3-10 dígitos.</div>
-                  </div>                
-                  <div class="form-group">
-                     <label for="email">Email:</label>
-                     <input type="email" class="form-control" id="email" placeholder="Ingresa Email" name="email" required>
-                     <div class="valid-feedback">Válido.</div>
-                     <div class="invalid-feedback">Por favor escribe un correo válido.</div>
-                  </div>      
-          </div>
-          <div class="col-sm-5">
-           <div class="form-group">
-                      <label for="lastName">Apellido:</label>
-                      <input type="text" class="form-control" id="lastName" placeholder="Ingresa Apellido" name="lastName" required>
-                      <div class="valid-feedback">Válido.</div>
-                      <div class="invalid-feedback">El Apellido debe tener de 3-15 dígitos y solo contener letras.</div>
-                   </div>
-                   <div class="form-group">
-                   <label for="phone">Teléfono:</label>
-                   <input type="tel" class="form-control" id="phone" placeholder="Ingresa Teléfono" name="phone" required>
-                     <div class="valid-feedback">Válido.</div>
-                   <div class="invalid-feedback">El Teléfono debe tener de 10 dígitos y solo contener números.</div>
-                </div>        
+    <div class="row justify-content-center" >
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header bg-info ">
+            <h3 class=" text-center"> Agregar Acceso a Usuario</h3>
           </div>
 
-          <div class="col-sm-5">
-          <div class="form-group">
-                     <label for="hab">Número de habitación:</label>
-                     <input type="number" class="form-control" id="hab" placeholder="" name="hab" required>
-                     <div class="valid-feedback">Válido.</div>
-                     <div class="invalid-feedback">El número de habitación debe tener de 3-10 dígitos.</div>
-                  </div> 
-                  <div class="form-group">
-                     <label for="date">Fecha de ingreso:</label>
-                     <input type="date" class="form-control" id="date" placeholder="Ingresa fecha" name="date" required>
-                     <div class="valid-feedback">Válido.</div>
-                     <div class="invalid-feedback">Ingresa una fecha correcta.</div>
-                  </div>
-                  <div class="form-group">
-                     <label for="hour">Hora:</label>
-                     <input type="time" class="form-control" id="hour" placeholder="Ingresa hora" name="hour" required>
-                     <div class="valid-feedback">Válido.</div>
-                     <div class="invalid-feedback">Ingresa una hora correcta.</div>
-                  </div>                
-                  
-                </div>
-          <div class="col-sm-5">
+        </div>
+      </div>
+    </div>   
+  </div>
+  <br>
+ <!-- Finish Container Access Client--> 
 
-          	<div class="form-group">
-                <label for="rfid">Número de tarjeta:</label>
-                <input type="text" class="form-control" id="rfid" placeholder="Ingresa tarjeta RFID" name="rfid" required>
-                <div class="valid-feedback">Válido.</div>
-                <div class="invalid-feedback">Por favor ingresa la terjeta RFID.</div>
-            </div>
-
-            <div class="form-group">
-                     <label for="estadia">Fecha de egreso:</label>
-                     <input type="date" class="form-control" id="estadia" placeholder="4 dias, 1 mes" name="estadia" min="<?php echo date("Y-m-d");?>" max="2100-12-31" value="<?php echo date("Y-m-d");?>" required>
-                     <div class="valid-feedback">Válido.</div>
-                     <div class="invalid-feedback">Por favor escribe una fecha de egreso correcta.</div>
-                  </div>     
-                                         
-          </div>
-       </div>
-       <div class="row justify-content-center my-4  ">
-          <div class="col-sm-5 text-center">               
-                   <div class="form-group  ">
-                      <button type="submit" class="btn btn-outline-info btn-lg btn-block  " id="addClient" name="enviar">
-                        Agregar Usuario
-                      </button>
-                   </div> 
-               </div>
-       </div> 
-    </form> 
-   </div>
-   </div>
-   </div>   
-</div>
-<br>
 <script>
 // Disable form submissions if there are invalid fields
 (function() {
@@ -213,7 +132,7 @@ session_start();
   }, false);
 })();
 </script>
-  <!-- Finish Container-->  
+  
 
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

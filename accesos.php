@@ -37,7 +37,7 @@ session_start();
   </style>
 <body class="bg-secondary">
     <!-- Start Menu Gigaticket-->
-  	<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-info">
+  	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <!-- Navbar content -->
      <a class="navbar-brand" href="#">
       <img src="http://localhost/esp32/paginasBootstrap/gt_icon.ico" width="30" height="30" class="d-inline-block align-top rounded img-fluid" alt="Gigaticket">
@@ -80,10 +80,7 @@ session_start();
           </div>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      
        <a class="navbar-brand" href="#">
       <img src="http://localhost/Prototipo/aragon.jpg" width="40" height="40" class="d-inline-block align-top rounded img-fluid mx-2" alt="fes aragon">
     </a>
@@ -101,9 +98,9 @@ session_start();
                      <img class="card-img-top " src="http://localhost/esp32/imagenes/userAdd.png" alt="User Add" style="width:100%">
                      <!--Add .card-img-top or .card-img-bottom to an <img> to place the image at the top or at the bottom inside the card. Note that we have added the image outside of the .card-body to span the entire width -->
                      <div class="card-body"> <!--Use .card-title to add card titles to any heading element. The .card-text class is used to remove bottom margins for a <p> element if it is the last child (or the only one) inside .card-body. The .card-link class adds a blue color to any link, and a hover effect. -->
-                         <h5 class="card-title">Click to access User</h5>
+                         <h5 class="card-title">Click to give  User access</h5>
                          <p class="card-text"></p>
-                         <a href="accesos/addacceso.php" class="btn btn-outline-info stretched-link btn-block">Add User</a> <!--Add the .stretched-link class to a link inside the card, and it will make the whole card clickable and hoverable (the card will act as a link) -->
+                         <a href="accesos/addacceso.php" class="btn btn-outline-info stretched-link btn-block">Add User access</a> <!--Add the .stretched-link class to a link inside the card, and it will make the whole card clickable and hoverable (the card will act as a link) -->
                      </div>
                   </div>
                 </div>
@@ -111,9 +108,9 @@ session_start();
                   <div class="card" style="width:250px">
                      <img class="card-img-top" src="http://localhost/esp32/imagenes/userEdit.png" alt="Card image" style="width:100%">
                      <div class="card-body">
-                         <h5 class="card-title">Click to Edit User</h5>
+                         <h5 class="card-title">Click to Edit User access</h5>
                          <p class="card-text"></p>
-                         <a href="#" class="btn btn-outline-success stretched-link btn-block">Edit User</a>
+                         <a href="#" class="btn btn-outline-success stretched-link btn-block">Edit User access</a>
                      </div>
                   </div>
                 </div>
@@ -121,9 +118,9 @@ session_start();
                   <div class="card" style="width:250px">
                      <img class="card-img-top" src="http://localhost/esp32/imagenes/userDelete.png" alt="Card image" style="width:100%">
                      <div class="card-body">
-                         <h5 class="card-title">Click to Delete User</h5>
+                         <h5 class="card-title">Click to Delete User access</h5>
                          <p class="card-text"></p>
-                         <a href="#" class="btn btn-outline-danger stretched-link btn-block">Delete User</a>
+                         <a href="#" class="btn btn-outline-danger stretched-link btn-block">Delete User access</a>
                      </div>
                   </div>
                 </div>
