@@ -83,10 +83,10 @@ $('#search').on('submit',function(){
               } 
               else {
                 console.log("ok processing info");
-                $('#alertSS').empty();
                 $('#wrongFecha').removeClass("visible").addClass("invisible");
                 $('#wrongHora').removeClass("visible").addClass("invisible");
                 event.preventDefault();
+
                 var datos= {
                       'fecha_i': fecha_i,
                       'fecha_f': fecha_f,
@@ -94,40 +94,10 @@ $('#search').on('submit',function(){
                       'hora_f': hora_f,
                       'nombre_espacio': nombre_espacio
                       };
-                $.post('../db/searchSpaceDB.php', datos, function(respuesta){
-                  	respuesta= JSON.parse(respuesta);
-                  	console.log(respuesta);
-                  	if (!(respuesta[0]['resp']==false)) {
-	            		$('#accessModal').modal('hide');
-	                	//MostrarTabla(respuesta);
-	                	var msj="";
-			            msj +=`
-			                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-			                    <strong>Espacio ocupado!</strong>
-			                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			                        <span aria-hidden="true">&times;</span>
-			                    </button>
-			                </div>
-			            `;
-			            $('#tableSpaces').empty();
-			             $('#tableSpaces').append(msj);
-
-	            	}
-		            else {
-		            	$('#accessModal').modal('hide');
-		                //MostrarTabla(respuesta);
-		                var msj="";
-		            	msj +=`
-		                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-		                        <strong>Espacio vacio!</strong> 
-		                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		                            <span aria-hidden="true">&times;</span>
-		                        </button>
-		                    </div>
-		                                `;
-		                $('#tableSpaces').empty();
-		                $('#tableSpaces').append(msj);
-		            }
+                $.post('../db/searchSpaceDB.php', datos, function(espacio){
+                  	espacio= JSON.parse(espacio);
+                  	console.log(espacio);
+                  	MostrarTablaAcceso(espacio);
                 });   
             }
         });
@@ -166,11 +136,129 @@ $('#search').on('submit',function(){
 	                </tr>
 				`;
 			}
-			$('#tableAA').empty();
-			$('#tableAA').append(tableBody);
+			$('#tableAA').empty().append(tableBody);
 	}
 
 	function ValidarFechaHora(datos) {
 
 
+	}
+
+	function MostrarTablaAcceso(espacio) {
+
+		var estado, tableBody = "";
+		if (!(espacio[0]['resp']==false)) {
+	        $('#accessModal').modal('hide');
+	        estado = true;
+	        MostrarAlerta(estado);
+	    	for (var i = 0 ; i < espacio.length ; i++) {
+
+                tableBody +=`
+
+                	<table class="table table-primary table-hover table-bordered">
+		              <thead class="thead-dark text-center">
+		                <tr class="">
+		                  <th>Id</th>
+		                  <th>Usuario</th>
+		                  <th>Espacio</th>
+		                  <th>Fecha ingreso</th>
+		                  <th>Fecha egreso</th>
+		                  <th>Hora ingreso</th>
+		                  <th>Hora egreso</th>
+		                  <th>Acceso</th>
+		                </tr>
+		              </thead>
+		              <tbody class="text-center">
+		              	<tr id="${espacio[i]['id_horario']}">
+	                        <td class="bg-danger " >${espacio[i]['id_horario']}</td>
+	                        <td >${espacio[i]['usuario']}</td>
+	                        <td >${espacio[i]['espacio']}</td>
+	                        
+	                        <td >${espacio[i]['fecha_inicio']}</td>
+	                        <td >${espacio[i]['fecha_final']}</td>
+	                        <td >${espacio[i]['hora_inicio']}</td>
+	                        <td >${espacio[i]['hora_final']}</td>
+	                        <td ><button  class="btn btn-outline-danger  btn-sm" name="btn-AA" id = "btn-AA" disabled>Acceso</button></td>
+	                    </tr>       
+		              </tbody>          
+		            </table>
+
+                `;
+            }
+            $('#tableAccess').empty().append(tableBody);
+	                
+	    }
+		else {
+		    $('#accessModal').modal('hide');
+		    //MostrarTabla(respuesta);
+		    estado = false;
+		    MostrarAlerta(estado);
+		    for (var i = 0 ; i < datos.length ; i++) {
+
+                tableBody +=`
+
+                	<table class="table table-primary table-hover table-bordered">
+		              <thead class="thead-dark text-center">
+		                <tr class="">
+		                  <th>Id</th>
+		                  <th>Usuario</th>
+		                  <th>Espacio</th>
+		                  <th>Fecha ingreso</th>
+		                  <th>Fecha egreso</th>
+		                  <th>Hora ingreso</th>
+		                  <th>Hora egreso</th>
+		                  <th>Acceso</th>
+		                </tr>
+		              </thead>
+		              <tbody class="text-center">
+		              	<tr id="">
+	                        <td class="bg-primary " ></td>
+	                        <td ></td>
+	                        <td >${datos[i]['nombre_espacio']}</td>
+	                        
+	                        <td >${datos[i]['fecha_i']}</td>
+	                        <td >${datos[i]['fecha_f']}</td>
+	                        <td >${datos[i]['hora_i']}</td>
+	                        <td >${datos[i]['hora_f']}</td>
+	                        <td ><button class="btn btn-outline-primary  btn-sm" name="btn-AA" id = "btn-AA">Acceso</button></td>
+	                    </tr>       
+		              </tbody>          
+		            </table>
+
+                `;
+            }
+            $('#tableAccess').empty().append(tableBody);
+
+		    
+		}
+	}
+
+
+	function MostrarAlerta(estado) {
+		var msj="";
+		if(estado == false) {
+			
+			msj +=`
+			    <div class="alert alert-success alert-dismissible fade show" role="alert">
+			        <strong>Espacio vacio!</strong>
+			        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			            <span aria-hidden="true">&times;</span>
+			        </button>
+			    </div>
+			`;
+			$('#alertSpaces').empty().append(msj);
+			
+		}
+		else {
+			
+			msj +=`
+			    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+			        <strong>Espacio ocupado!</strong>
+			        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			            <span aria-hidden="true">&times;</span>
+			        </button>
+			    </div>
+			`;
+			$('#alertSpaces').empty().append(msj);
+		}
 	}

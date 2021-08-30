@@ -209,10 +209,11 @@
         </div>
       </div>
 
-      <div id="res" class="text-center">
-               
-      </div>
-      <div class="container" id="tableSpaces"></div>
+      <div id="res" class="text-center"> </div>
+
+      <div class="container" id="alertSpaces"> </div>
+
+      <div class="container" id="tableAccess"></div>
     </div>
     <br>
     <!-- Finish Container Access Client--> 

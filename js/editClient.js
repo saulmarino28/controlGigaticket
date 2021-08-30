@@ -64,10 +64,9 @@ $(document).on('click', '#btn-edit', function(){
         $('#hour_f').val(data[0]['hour_f']);
 
  
-   });
-   
-
+   });   
 });
+
 $('#actualizar').on('click',function(){
     //console.log("actualizando");
        var id = $('#id_update').val(),
@@ -165,6 +164,5 @@ function obtenerDatos() {
                     </tr>
                 `;
             }
-            $('#tabla1').empty();
-            $('#tabla1').append(tableBody);
+            $('#tabla1').empty().append(tableBody);
     }   
