@@ -120,6 +120,7 @@
                 <form method="POST" id="search" action="#" class="needs-validation" novalidate>
                   <div class="row justify-content-center m-2">
                     <div class="col-md-6">
+                      <input type="hidden" name="name" id="name" class="">
                       <div class="form-group">
                         <label for="fecha_i">Fecha ingreso:</label>
                         <input type="date" class="form-control" id="fecha_i" placeholder="Ingresa fecha" name="fecha_i" required>
@@ -213,7 +214,7 @@
 
       <div class="container" id="alertSpaces"> </div>
 
-      <div class="container" id="tableAccess"></div>
+      <div class="container  mt-5 table-responsive-xl" id="tableAccess"></div>
     </div>
     <br>
     <!-- Finish Container Access Client--> 
