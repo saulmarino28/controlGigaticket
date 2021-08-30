@@ -110,10 +110,9 @@ session_start();
   <!--Finish alert -->
 
   <!-- Start Container-->
- <div class="container pt-5 ">
+  <div class="container pt-5 ">
   <h2 class="m-2  ">¡Reserva una habitación!</h2> <br>
-  <div class="row justify-content-center" >
-    
+  <div class="row justify-content-center" >  
     <div class="col">
       <div class="card">   
         <div class="card-header bg-info ">
@@ -218,7 +217,7 @@ session_start();
           var fecha_f = $('#fecha_f').val();
           var hora_i = $('#hour_i').val();
           var hora_f = $('#hour_f').val();
-          var nombre_espacio =  $('#tipo_habitacion option:selected').val();
+          var nombre_espacio =  $('#spaces option:selected').val();
 
           if (fecha_i > fecha_f ) {
 
@@ -227,19 +226,7 @@ session_start();
            $('#wrongHora').removeClass("visible").addClass("invisible");
            event.preventDefault();
            event.stopPropagation();
-           
-           var msj="";
-            msj +=`
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Hola SaulMa!</strong> ingresa una fecha inicial menor que la fecha final
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                                `;
-                $('#alertSS').empty().append(msj);
               
-
         } 
         else if ((hora_i > hora_f)) {
 
@@ -248,17 +235,7 @@ session_start();
            $('#wrongHora').removeClass("invisible").addClass("visible");
            event.preventDefault();
            event.stopPropagation();
-           //console.log(hora_i);
-           var msj="";
-            msj +=`
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Hola SaulMa!</strong> ingresa una hora de egreso mayor que la hora de ingreso
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                                `;
-                $('#alertSS').empty().append(msj);  
+           //console.log(hora_i);  
         
         } 
         else {

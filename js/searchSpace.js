@@ -3,7 +3,8 @@ $(document).ready(function(){
 	//console.log("hola mundo");
 	$.get("../db/SpacesDB.php", function(res){
 		res = JSON.parse(res);
-		console.log(res);
+		//console.log(res);
+
 		var texto ="";
 		for (var i = 0; i <res.length; i++) {
 			texto += `

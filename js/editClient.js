@@ -12,44 +12,20 @@ $(document).ready(function(){
     $("#myInput").on("keyup", function() {
 
         var value = $(this).val().toLowerCase();
-
         busqueda = { 
-
             'busqueda':value
         };
 
         $.post("../db/busqueda.php", busqueda, function(respuesta){
 
-            console.log(respuesta);
-            /*$("#tabla1 tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });*/
+            //console.log(respuesta);
             respuesta = JSON.parse(respuesta);
                     
-            var text = "";
             if (!(respuesta[0]['resp']==true)) {
 
-                for(i = 0; i<respuesta.length; i++){
-                    text += `
-                        <tr id="${respuesta[i]['IdC']}">
-                            <td class="bg-info " >${respuesta[i]['IdC']}</td>
-                            <td >${respuesta[i]['name']}</td>
-                            <td >${respuesta[i]['lastName']}</td>
-                            <td >${respuesta[i]['email']}</td>
-                            <td >${respuesta[i]['phone']}</td>
-                            <td >${respuesta[i]['rfid']}</td>
-                            <td >${respuesta[i]['hab']}</td>
-                            <td >${respuesta[i]['fecha_i']}</td>
-                            <td >${respuesta[i]['fecha_f']}</td>
-                            <td >${respuesta[i]['hour_i']}</td>
-                            <td >${respuesta[i]['hour_f']}</td>
-                            <td ><button  class="btn btn-outline-info  btn-sm edit" name="btn-edi" id = "btn-edit">Editar</button></td>
-                        </tr>`;                   
-                            
-                        }
-                        $('#res').empty();
-                        $('#tabla1').empty();
-                        $('#tabla1').append(text);
+                MostrarTabla(respuesta);
+                $('#res').empty();
+                        
             } 
             else {
                
@@ -61,9 +37,11 @@ $(document).ready(function(){
                 $('#res').append(res);
             }
 
-        }); 
-    });
-});
+        }); //cierra la busqueda a la DB  
+    }); //cierra funcion de myInput
+}); //cierra la la funcion principal
+
+
 $(document).on('click', '#btn-edit', function(){
     $("#editModal").modal("show");
     var atributo = {'id_user' : $(this).parent().parent().attr('id')};
@@ -92,19 +70,19 @@ $(document).on('click', '#btn-edit', function(){
 });
 $('#actualizar').on('click',function(){
     //console.log("actualizando");
-       var id = $('#id_update').val();
-        var name = $('#name').val();
-        var lastName = $('#lastName').val();
-        var email = $('#email').val();
-        var phone = $('#phone').val();
-        var rfid = $('#rfid').val();
-        var hab = $('#hab').val();
-        var fecha_i = $('#fecha_i').val();
-        var fecha_f = $('#fecha_f').val();
-        var hour_i = $('#hour_i').val();
-        var hour_f = $('#hour_f').val();
+       var id = $('#id_update').val(),
+            name = $('#name').val(),
+            lastName = $('#lastName').val(),
+            email = $('#email').val(),
+            phone = $('#phone').val(),
+            rfid = $('#rfid').val(),
+            hab = $('#hab').val(),
+            fecha_i = $('#fecha_i').val(),
+            fecha_f = $('#fecha_f').val(),
+            hour_i = $('#hour_i').val(),
+            hour_f = $('#hour_f').val();
 
-        var datos_enviar = {
+       var datos_enviar = {
             'id' : id,
             'name': name,
             'lastName': lastName,
@@ -127,7 +105,7 @@ $('#actualizar').on('click',function(){
             var msj="";
             msj +=`
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Hola SaulMa!</strong> Has actualizado un cliente.
+                        <strong>Has actualizado un cliente!</strong> .
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -142,7 +120,7 @@ $('#actualizar').on('click',function(){
             var msj="";
             msj +=`
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Hola SaulMa!</strong> No se ha actualizado el cliente.<br>
+                        <strong> No se ha actualizado el cliente!</strong><br>
                         Error este correo ya esta asociado a otro cliente
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -155,36 +133,38 @@ $('#actualizar').on('click',function(){
         }
        });
 });
-function obtenerDatos(){
-    $.get("../db/registrosDB.php", function(respuesta){
-        console.log(respuesta);
 
-                //respuesta=JSON.stringify(respuesta);
-        respuesta = JSON.parse(respuesta);
-                
-        var texto = "";
-       
-        for(i = 0; i<respuesta.length; i++){
-            texto += `
-                <tr id="${respuesta[i]['IdC']}">
-                    <td class="bg-info " >${respuesta[i]['IdC']}</td>
-                    <td >${respuesta[i]['name']}</td>
-                    <td >${respuesta[i]['lastName']}</td>
-                    <td >${respuesta[i]['email']}</td>
-                    <td >${respuesta[i]['phone']}</td>
-                    <td >${respuesta[i]['rfid']}</td>
-                    <td >${respuesta[i]['hab']}</td>
-                    <td >${respuesta[i]['fecha_i']}</td>
-                    <td >${respuesta[i]['fecha_f']}</td>
-                    <td >${respuesta[i]['hour_i']}</td>
-                    <td >${respuesta[i]['hour_f']}</td>
-                    <td ><button  class="btn btn-outline-info  btn-sm edit" name="btn-edi" id = "btn-edit">Editar</button></td>
-                </tr>`;                   
-                    
-                }
 
-                $('#tabla1').empty();
-                $('#tabla1').append(texto);
+function obtenerDatos() {
+        $.get('../db/registrosDB.php' , function(respuesta) {
+            //console.log(respuesta);
+            respuesta = JSON.parse(respuesta);
+            //console.log(respuesta);
+            MostrarTabla(respuesta);
+        });
+    }
 
-    });
-}   
+    function MostrarTabla(respuesta)  {
+        var tableBody = "";
+            for (var i = 0 ; i < respuesta.length ; i++) {
+
+                tableBody +=`
+                    <tr id="${respuesta[i]['IdC']}">
+                        <td class="bg-info " >${respuesta[i]['IdC']}</td>
+                        <td >${respuesta[i]['name']}</td>
+                        <td >${respuesta[i]['lastName']}</td>
+                        <td >${respuesta[i]['email']}</td>
+                        <td >${respuesta[i]['phone']}</td>
+                        <td >${respuesta[i]['rfid']}</td>
+                        <td >${respuesta[i]['hab']}</td>
+                        <td >${respuesta[i]['fecha_i']}</td>
+                        <td >${respuesta[i]['fecha_f']}</td>
+                        <td >${respuesta[i]['hour_i']}</td>
+                        <td >${respuesta[i]['hour_f']}</td>
+                        <td ><button  class="btn btn-outline-info  btn-sm edit" name="btn-edi" id = "btn-edit">Editar</button></td>
+                    </tr>
+                `;
+            }
+            $('#tabla1').empty();
+            $('#tabla1').append(tableBody);
+    }   
