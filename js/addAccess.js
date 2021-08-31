@@ -108,21 +108,7 @@ $('#search').on('submit',function(){
   
 
 $(document).on('click', '#btn-asignarAcceso', function() {
-	
-	
-     /*for (var i = 0; i <$(this).parents("tr").find("td")[].length; i++) {
-     	var datos = {
-		'name' : $(this).parents("tr").find("td")[i].innerHTML,
-		'espacio' : $(this).parents("tr").find("td")[i].innerHTML,
-		'fecha_i' : $(this).parents("tr").find("td")[i].innerHTML,
-		'fecha_f' : $(this).parents("tr").find("td")[i].innerHTML,
-		'hora_i' : $(this).parents("tr").find("td")[i].innerHTML,
-		'hora_f' : $(this).parents("tr").find("td")[i].innerHTML
-
-	};
-     }*/
- 	
- 	//Object.keys(obj).forEach(key => console.log(key, obj[key]))
+	 		
 	var nuevoHorario = {
 		'name' : $(this).parents("tr").find("td")[1].innerHTML,
 		'espacio' : $(this).parents("tr").find("td")[2].innerHTML,
@@ -133,8 +119,39 @@ $(document).on('click', '#btn-asignarAcceso', function() {
 
 	};
 	console.log(nuevoHorario);
-	$.post('../db/AddhorarioDB.php', nuevoHorario, function(respuesta) {
+	$.post('../db/AddHorarioDB.php', nuevoHorario, function(respuesta) {
 
+		var msj="",
+      	status = JSON.parse(respuesta);
+      	console.log(status);
+    	 if (status[0]['respuesta'] == true) {
+            
+            var msj="";
+            msj +=`
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Has dado acceso al cliente!</strong> 
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                                `;
+                $('#alertSpaces').empty().append(msj);
+                
+        }
+        else {
+            
+            msj +=`
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong> No se ha podido dar acceso al cliente!</strong><br>
+                       
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                                `;
+                $('#alertSpaces').empty().append(msj);
+                
+        }  
 	}); //cierra el post() para insertar un horario a la DB
 }); // cierra funcion del boton asignar acceso     
             
