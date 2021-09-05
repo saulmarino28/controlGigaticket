@@ -110,7 +110,7 @@ session_start();
                      <div class="card-body">
                          <h5 class="card-title">Click to Edit User access</h5>
                          <p class="card-text"></p>
-                         <a href="#" class="btn btn-outline-success stretched-link btn-block">Edit User access</a>
+                         <a href="accesos/editacceso.php" class="btn btn-outline-success stretched-link btn-block">Edit User access</a>
                      </div>
                   </div>
                 </div>

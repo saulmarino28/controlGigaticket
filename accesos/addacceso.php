@@ -183,6 +183,7 @@
       </div>
       <!-- Modal finish -->
 
+      <!-- Table start-->
       <h2 class="m-2  ">¡Reserva una espacio!</h2> <br>
 
       <div class="container mt-5 table-responsive-xl"> 

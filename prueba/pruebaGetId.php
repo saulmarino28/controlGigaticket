@@ -1,4 +1,4 @@
-
+<!--
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,26 +24,26 @@
 	<input type="text"  name="telefono" id="telefono" placeholder="5580558055"  required>
 	<label>ID</label>
 	<input type="text"  name="rfid" id="rfid" placeholder="ingrese tarjeta rfid" maxlength="10" required> 
-	<!--<span style="font-size: 20px" id="rfid">000000000</span>-->
+	!--<span style="font-size: 20px" id="rfid">000000000</span>--
 	
 
    <button type="submit">Enviar</button>
 
 </form> 
- <!-- Optional JavaScript -->
+ !-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
      
     <!--
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
-    -->
+    --
      <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="crossorigin="anonymous"></script>
     <script type="text/javascript" src="prueba_GetId.js"></script>
 </body>
 </html>
 
-
+-->
 <?php 
 /*
 	header('Access-Control-Allow-Origin: http://www.example.com');
@@ -60,7 +60,7 @@ if ($this->getRequestMethod() == 'OPTIONS')
 */
  ?>
 
-<!--
+
  <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,7 +72,7 @@ if ($this->getRequestMethod() == 'OPTIONS')
     <div id="content"></div>
     <div>Error response</div>
     <div id="errorContent"></div>
-</body>
+
 !--
 <script>
     var xhttp = new XMLHttpRequest();
@@ -88,7 +88,7 @@ if ($this->getRequestMethod() == 'OPTIONS')
     };
  
     var params = {
-        ip: "192.168.1.123",
+        ip: "saul",
         gw: "192.168.1.1",
         nm: "192.168.1.255"
     }
@@ -98,11 +98,12 @@ if ($this->getRequestMethod() == 'OPTIONS')
     xhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
     xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
  
-    xhttp.setRequestHeader('Content-type', 'application/json')
+    xhttp.setRequestHeader('Content-type', 'application/json');
     xhttp.send(JSON.stringify(params)) // Make sure to stringify
  
 </script>
--->
+</body>
+</html>
 <!--
 <script>
 
@@ -118,17 +119,18 @@ if ($this->getRequestMethod() == 'OPTIONS')
         document.getElementById("errorContent").innerHTML = "Status code is " + this.status + " click F12 and check what is the problem on console"+"saulmalo";
     };
 
-    xhttp.open("GET", "http://esp32_saulma/settings");
-    xhttp.withCredentials = true;
+    xhttp.open("GET", "http://192.168.1.81/settings");
     
     
-    xhttp.setRequestHeader("Access-Control-Allow-Headers", "*");
-
-	xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-	xhttp.setRequestHeader("Content-Type", "application/json");
+    
+    xhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+    xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+ 
+    xhttp.setRequestHeader('Content-type', 'application/json');
     xhttp.send();
 
  
-</script> --
-</html>-->
+</script> 
+</body>
+</html> -->
 
