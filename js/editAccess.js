@@ -57,7 +57,65 @@ $(document).on('click', '#btn-editA', function(){
    });   
 });
 
-$('#actualizarA').on('click',function(){
+// TO DO
+//Falta asignar esta parte para una mejor funcionalidad
+//* 
+//funcion para la buscar un espacio
+$('#formAccess').on('submit',function(){
+
+    var id = $('#id_update').val(),
+        name = $('#name').val(),
+        fecha_i = $('#fecha_i').val(),
+        fecha_f = $('#fecha_f').val(),
+        hora_i = $('#hour_i').val(),
+        hora_f = $('#hour_f').val(),
+        nombre_espacio =  $('#spaces option:selected').val();
+
+    if (fecha_i > fecha_f ) {
+
+        console.log("error wrong info");
+        $('#wrongFecha').removeClass("invisible").addClass("visible");
+        $('#wrongHora').removeClass("visible").addClass("invisible");
+        event.preventDefault();
+        event.stopPropagation();
+                    
+    } 
+    else if ((hora_i > hora_f)) {
+
+        console.log("error wrong info");
+        $('#wrongFecha').removeClass("visible").addClass("invisible");
+        $('#wrongHora').removeClass("invisible").addClass("visible");
+        event.preventDefault();
+        event.stopPropagation();
+        //console.log(hora_i);  
+              
+    } 
+    else {
+        console.log("ok processing info");
+        $('#wrongFecha').removeClass("visible").addClass("invisible");
+        $('#wrongHora').removeClass("visible").addClass("invisible");
+        event.preventDefault();
+
+        var datos= {
+            'name': name,   
+            'fecha_i': fecha_i,
+            'fecha_f': fecha_f,
+            'hora_i': hora_i,
+            'hora_f': hora_f,
+            'nombre_espacio': nombre_espacio
+        };
+        $.post('../db/searchSpaceDB.php', datos, function(espacio){
+            espacio= JSON.parse(espacio);
+            console.log(espacio);
+            console.log("Para editar primero remueve este acceso");
+            //MostrarTablaAcceso(espacio, datos);
+        });   
+    }
+}); //cierra la funcion para buscar un espacio
+ 
+//*/
+
+$('#ac').on('click',function(){
     //console.log("actualizando");
        var id = $('#id_update').val(),
             name = $('#name').val(),

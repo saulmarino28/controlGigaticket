@@ -112,25 +112,23 @@ session_start();
               </button>
             </div>
             <div class="modal-body"> 
-              <form method="POST" action="#" class="needs-validation my-2" novalidate>
+              <form method="POST" action="#" id="formAccess"  class="needs-validation my-2" novalidate>
                 <div class="row justify-content-center ">
                   <div class="col-sm-5">
                     <input type="hidden" name="id_update" id="id_update" class="">
-                    <div class="form-group">
-                      <label for="name">Nombre:</label>
-                      <input type="text" class="form-control" id="name" placeholder="Ingresa Nombre" name="name" required>
-                      <div class="valid-feedback">Válido.</div>
-                      <div class="invalid-feedback">EL nombre de usuario debe tener de 3-10 dígitos.</div>
-                    </div>                
+                    <input type="hidden" name="name" id="name">
+                      <div class="form-group">
+                        <label for="spaces">Espacios:</label>
+                        <select class="form-control " id="spaces" name="spaces">
+                          
+                        </select>
+                        <div class="valid-feedback">Válido.</div>
+                        <div class="invalid-feedback">Ingresa un espacio válido.</div>
+                      </div>               
                           
                   </div>
                   <div class="col-sm-5">
-                    <div class="form-group">
-                      <label for="space">Espacio: </label>
-                      <input type="text" class="form-control" id="space" placeholder="Ingresa Espacio" name="space" required>
-                      <div class="valid-feedback">Válido.</div>
-                      <div class="invalid-feedback">El Espacio debe tener de 3-15 dígitos y solo contener letras.</div>
-                    </div>
+                    
                             
                   </div>
 
@@ -143,28 +141,36 @@ session_start();
                       <div class="invalid-feedback">Ingresa una fecha correcta.</div>
                     </div>
                     <div class="form-group">
-                      <label for="hour_i">Hora de ingreso:</label>
-                      <input type="time" class="form-control" id="hour_i" placeholder="Ingresa fecha" name="hour_i" required>
-                      <div class="valid-feedback">Válido.</div>
-                      <div class="invalid-feedback">Ingresa una hora correcta.</div>
+                      <label for="fecha_f">Fecha de egreso:</label>
+                      <input type="date" class="form-control" id="fecha_f" placeholder="4 dias, 1 mes" name="fecha_f" min="<?php echo date("Y-m-d");?>" max="2100-12-31" value="<?php echo date("Y-m-d");?>" required>
+                      
+                      <div class="invalid-feedback">Por favor escribe una la fecha de egreso correcta.</div>
+                      <div id="wrongFecha" name="wrongFecha" class="text-danger invisible "> <h6>Ingresa una fecha de egreso mayor que la fecha de ingreso</h6></div>
                     </div>
                    
                   </div>
 
                   <div class="col-sm-5">
                     <div class="form-group">
-                      <label for="fecha_f">Fecha de egreso:</label>
-                      <input type="date" class="form-control" id="fecha_f" placeholder="4 dias, 1 mes" name="fecha_f" min="<?php echo date("Y-m-d");?>" max="2100-12-31" value="<?php echo date("Y-m-d");?>" required>
+                      <label for="hour_i">Hora de ingreso:</label>
+                      <input type="time" class="form-control" id="hour_i" placeholder="Ingresa fecha" name="hour_i" required>
                       <div class="valid-feedback">Válido.</div>
-                      <div class="invalid-feedback">Por favor escribe una la fecha de egreso correcta .</div>
+                      <div class="invalid-feedback">Ingresa una hora correcta.</div>
                     </div>
                     <div class="form-group">
                       <label for="hour_f">Hora de egreso:</label>
                       <input type="time" class="form-control" id="hour_f" placeholder="Ingresa fecha" name="hour_f" required>
-                      <div class="valid-feedback">Válido.</div>
+                      
                       <div class="invalid-feedback">Ingresa una hora correcta.</div>
+                      <div id="wrongHora" name="wrongHora" class="text-danger invisible "> <h6>Ingresa una hora de egreso mayor que la hora de ingreso</h6></div>
                     </div>       
                       
+                  </div>
+                  <div class="form-group">
+                    <br>
+                    <button type="submit" class="btn btn-outline-warning btn-lg   d-inline-block " name="enviar" id="enviarA">
+                       Actualizar Acceso del Usuario
+                    </button>
                   </div>
 
                 </div>      
@@ -172,9 +178,7 @@ session_start();
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-outline-light  " name="enviar" id="actualizarA">  
-              Actualizar Acceso del Usuario
-            </button>
+         
           </div>
         </div>
       </div>
@@ -232,6 +236,7 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../js/editAccess.js"></script>
+<script type="text/javascript" src="../js/searchSpace.js"></script>
 </body>
 </html>
  

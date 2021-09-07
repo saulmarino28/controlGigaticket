@@ -25,8 +25,7 @@ $(document).ready(function() {
                 var res="";
                 res += `<h3>No hay resultados</h3>`;    
                 $('#tableAA').empty();
-                $('#res').empty();
-                $('#res').append(res);
+                $('#res').empty().append(res);
 
             }
         }); //cierra la busqueda a la DB 
@@ -119,6 +118,7 @@ $(document).on('click', '#btn-asignarAcceso', function() {
 
 	};
 	console.log(nuevoHorario);
+	DisableButton();
 	$.post('../db/AddHorarioDB.php', nuevoHorario, function(respuesta) {
 
 		var msj="",
@@ -305,4 +305,9 @@ $(document).on('click', '#btn-asignarAcceso', function() {
 		`;
 		return tableHead; 
 		
+	}
+	function DisableButton() {
+		var prueba = document.getElementById('btn-asignarAcceso'); //.setAttribute("disabled",true);
+		prueba.disabled = true;
+
 	}

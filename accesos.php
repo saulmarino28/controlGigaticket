@@ -120,7 +120,7 @@ session_start();
                      <div class="card-body">
                          <h5 class="card-title">Click to Delete User access</h5>
                          <p class="card-text"></p>
-                         <a href="#" class="btn btn-outline-danger stretched-link btn-block">Delete User access</a>
+                         <a href="accesos/deleteacceso.php" class="btn btn-outline-danger stretched-link btn-block">Delete User access</a>
                      </div>
                   </div>
                 </div>
