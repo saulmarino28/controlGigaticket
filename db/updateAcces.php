@@ -2,11 +2,11 @@
 
     $id= $_POST['id'];
     $name = $_POST['name'];
-    $space = $_POST['space'];
+    $space = $_POST['nombre_espacio'];
     $fecha_i = $_POST['fecha_i'];
     $fecha_f = $_POST['fecha_f'];
-    $hour_i = $_POST['hour_i'];
-    $hour_f = $_POST['hour_f'];
+    $hour_i = $_POST['hora_i'];
+    $hour_f = $_POST['hora_f'];
     
    $conexion = @new mysqli('localhost', 'root', '', 'wifi access');
 

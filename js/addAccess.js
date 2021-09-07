@@ -200,6 +200,7 @@ $(document).on('click', '#btn-asignarAcceso', function() {
 	        estado = true;
 	        MostrarAlerta(estado);
 	    	for (var i = 0 ; i < espacio.length ; i++) {
+	    		tableBody += `<h3> Espacio ocupado</h3>`;
 	    		tableBody += TableHead();
                 tableBody +=`
 

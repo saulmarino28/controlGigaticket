@@ -1,9 +1,6 @@
 $(document).ready(function(){
     obtenerDatos();
-   // hacerclic();
-
-
-       
+    // hacerclic();
     $("#myInput").on("keyup", function() {
 
         var value = $(this).val().toLowerCase();
@@ -16,7 +13,7 @@ $(document).ready(function(){
             //console.log(respuesta);
             respuesta = JSON.parse(respuesta);
                     
-            if (!(respuesta[0]['resp']==false)) {
+            if (!(respuesta[0]['resp'] == false)) {
 
                 MostrarTabla(respuesta);
                 $('#res').empty();
@@ -25,8 +22,7 @@ $(document).ready(function(){
             else {
                
                 var res="";
-                res += `<h3>No hay resultados</h3>`;
-                    
+                res += `<h3>No hay resultados</h3>`;   
                 $('#tableEditAccess').empty();
                 $('#res').empty().append(res);
             }
@@ -42,12 +38,12 @@ $(document).on('click', '#btn-editA', function(){
     console.log(atributo);
     $.post('../db/editAccessDB.php', atributo, function(respuesta){
       //console.log(respuesta);
-      data = JSON.parse(respuesta);
-       //console.log(data[0]['IdA']);
+      var data = JSON.parse(respuesta);
+       //console.log(data);
 
         $('#id_update').val(data[0]['IdA']);
         $('#name').val(data[0]['name']);
-        $('#space').val(data[0]['space']);
+        $('#spaces').val(data[0]['space']);
         $('#fecha_i').val(data[0]['fecha_i']);
         $('#fecha_f').val(data[0]['fecha_f']);
         $('#hour_i').val(data[0]['hour_i']);
@@ -96,7 +92,8 @@ $('#formAccess').on('submit',function(){
         $('#wrongHora').removeClass("visible").addClass("invisible");
         event.preventDefault();
 
-        var datos= {
+        var datos_enviar= {
+            'id': id,
             'name': name,   
             'fecha_i': fecha_i,
             'fecha_f': fecha_f,
@@ -104,73 +101,18 @@ $('#formAccess').on('submit',function(){
             'hora_f': hora_f,
             'nombre_espacio': nombre_espacio
         };
-        $.post('../db/searchSpaceDB.php', datos, function(espacio){
-            espacio= JSON.parse(espacio);
+        //console.log(datos);
+        $.post('../db/searchSpaceEditDB.php', datos_enviar, function(espacio){
+            espacio = JSON.parse(espacio);
             console.log(espacio);
-            console.log("Para editar primero remueve este acceso");
-            //MostrarTablaAcceso(espacio, datos);
+            //console.log("If false edita acceso otherwise it's unable");
+            
+            MostrarTablaAcceso(espacio, datos_enviar);
         });   
     }
 }); //cierra la funcion para buscar un espacio
  
 //*/
-
-$('#ac').on('click',function(){
-    //console.log("actualizando");
-       var id = $('#id_update').val(),
-            name = $('#name').val(),
-            space = $('#space').val(),
-            fecha_i = $('#fecha_i').val(),
-            fecha_f = $('#fecha_f').val(),
-            hour_i = $('#hour_i').val(),
-            hour_f = $('#hour_f').val();
-
-       var datos_enviar = {
-            'id' : id,
-            'name': name,
-            'space': space,
-            'fecha_i': fecha_i,
-            'fecha_f': fecha_f,
-            'hour_i': hour_i,
-            'hour_f': hour_f
-        };
-       //console.log(datos_enviar);
-       $.post('../db/updateAcceso.php', datos_enviar, function(respuesta){
-        //console.log(respuesta);
-        var res = JSON.parse(respuesta), 
-            msj="";
-        //console.log(res);
-        if (res[0]['resp'] == true) {
-            $('#editModal').modal('hide');
-            
-            msj +=`
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Has actualizado el acceso del cliente!</strong> 
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                                `;
-                $('#alertEditAccess').empty().append(msj);
-                obtenerDatos();
-        }
-        else {
-            $('#editModal').modal('hide');
-            
-            msj +=`
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong> No se ha actualizado el acceso del cliente!</strong><br>
-                        Error
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                                `;
-                $('#alertEditAccess').empty().append(msj);
-                obtenerDatos();
-        }
-       });
-});
 
 
 function obtenerDatos() {
@@ -201,4 +143,130 @@ function obtenerDatos() {
                 `;
             }
             $('#tableEditAccess').empty().append(tableBody);
+    }
+    ///TO DO
+    ///adecuar funcion. para editar acceso
+    function MostrarTablaAcceso(espacio, datos_enviar) {
+        //console.log(datos);
+        var estado, tableBody = "";
+        if (!(espacio[0]['resp'] == false)) {
+            console.log("ocupado");
+            $('#editModal').modal('hide');
+            estado = true;
+            MostrarAlerta(estado);
+            for (var i = 0 ; i < espacio.length ; i++) {
+                tableBody += `<h3> Espacio ocupado</h3>`;
+                tableBody += TableHead();
+                tableBody +=`
+
+                    
+                      <tbody class="text-center">
+                        <tr id="${espacio['id_horario']}">
+                            <td class="bg-danger " >${espacio[i]['id_horario']}</td>
+                            <td >${espacio[i]['usuario']}</td>
+                            <td >${espacio[i]['espacio']}</td>
+                            
+                            <td >${espacio[i]['fecha_inicio']}</td>
+                            <td >${espacio[i]['fecha_final']}</td>
+                            <td >${espacio[i]['hora_inicio']}</td>
+                            <td >${espacio[i]['hora_final']}</td>
+                            <td ><button  class="btn btn-outline-danger  btn-sm" name="btn-AA" id = "btn-asignarAcceso" disabled>Asignar espacio</button></td>
+                        </tr>       
+                      </tbody>          
+                    </table>
+
+                `;
+            }
+            $('#table2').empty().append(tableBody);
+                    
+        }
+        else {
+            $('#editModal').modal('hide');
+            $('#table2').empty();
+            console.log("vacio, actualizando");
+            //estado = false;
+            //MostrarAlerta(estado);
+            $.post('../db/updateAcces.php', datos_enviar, function(respuesta){
+                //console.log(respuesta);
+                var res = JSON.parse(respuesta);
+
+                if (res[0]['resp'] == true) {
+                    //$('#editModal').modal('hide');
+                    estado = false;
+                    MostrarAlerta(estado);
+                    obtenerDatos();
+                }
+                else {
+                    //$('#editModal').modal('hide');
+                    estado = "error";
+                    MostrarAlerta(estado);
+                    
+                }
+            });//cierre del post (para actualizar el acceso)
+    
+        }//cierre else (si esta vacio el espacio 
+    } //cierre de la funcion MostrarTablaAcceso
+
+
+    function MostrarAlerta(estado) {
+        var msj="";
+        if(estado == false) {
+            
+            msj +=`
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>¡Acceso actualizado correctamente!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            `;
+            
+            
+        }
+        if (estado == "error") {
+            msj +=`
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error no se ha podido actualizar el acceso!</strong><br>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+          `;
+                        
+                        
+        }
+        else {
+            
+            msj +=`
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>¡Espacio ocupado! No puedes elegir este espacio  </strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            `;
+            
+        }
+        $('#alertEditAccess').empty().append(msj);
+    }
+
+    function TableHead() {
+        var tableHead = ""; 
+        tableHead +=`
+            <table class="table table-primary table-hover table-bordered">
+                <thead class="thead-dark text-center">
+                    <tr class="">
+                    <th>Id</th>
+                    <th>Usuario</th>
+                    <th>Espacio</th>
+                    <th>Fecha ingreso</th>
+                    <th>Fecha egreso</th>
+                    <th>Hora ingreso</th>
+                    <th>Hora egreso</th>
+                    <th>Acceso</th>
+                    </tr>
+                </thead>
+        `;
+        return tableHead; 
+        
     }   

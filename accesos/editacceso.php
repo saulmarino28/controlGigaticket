@@ -118,7 +118,7 @@ session_start();
                     <input type="hidden" name="id_update" id="id_update" class="">
                     <input type="hidden" name="name" id="name">
                       <div class="form-group">
-                        <label for="spaces">Espacios:</label>
+                        <label for="spaces">Espacio:</label>
                         <select class="form-control " id="spaces" name="spaces">
                           
                         </select>
@@ -219,6 +219,9 @@ session_start();
 
       
     <!-- Table finish-->
+    <div class="container mt-5 table-responsive-xl" id="table2">
+      
+    </div>
 <!--Finish container -->
 <br>
 
