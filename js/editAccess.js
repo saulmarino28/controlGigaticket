@@ -154,13 +154,15 @@ function obtenerDatos() {
             $('#editModal').modal('hide');
             estado = true;
             MostrarAlerta(estado);
+            tableBody += `<h3> Espacio ocupado</h3>`;
+            tableBody += TableHead();
+            tableBody += `<tbody class="text-center">`;
             for (var i = 0 ; i < espacio.length ; i++) {
-                tableBody += `<h3> Espacio ocupado</h3>`;
-                tableBody += TableHead();
+                
                 tableBody +=`
 
                     
-                      <tbody class="text-center">
+                      
                         <tr id="${espacio['id_horario']}">
                             <td class="bg-danger " >${espacio[i]['id_horario']}</td>
                             <td >${espacio[i]['usuario']}</td>
@@ -172,11 +174,12 @@ function obtenerDatos() {
                             <td >${espacio[i]['hora_final']}</td>
                             <td ><button  class="btn btn-outline-danger  btn-sm" name="btn-AA" id = "btn-asignarAcceso" disabled>Asignar espacio</button></td>
                         </tr>       
-                      </tbody>          
-                    </table>
 
                 `;
             }
+            tableBody += `</tbody>          
+                        </table>`
+                    ;
             $('#table2').empty().append(tableBody);
                     
         }

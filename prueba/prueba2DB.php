@@ -56,7 +56,7 @@
 
             $error_msg = $conexion->error;
             $afect_row = $conexion->affected_rows;
-          	$respuesta[] = ['respuesta' => FALSE, 'error_msg' => $error_msg, 'affected_rows' => $afect_row]; //hubo error en la consulta e insercion de datos a la DB
+          	$respuesta[] = ['respuesta' => "FALSE", 'error_msg' => $error_msg, 'affected_rows' => $afect_row]; //hubo error en la consulta e insercion de datos a la DB
           	echo json_encode($respuesta);
           	$consulta->free();
             $conexion->close();

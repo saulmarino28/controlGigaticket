@@ -20,17 +20,20 @@ $.get("http://192.168.1.81/sendRfid", function(lectId) {
         //console.log(respuesta);
         match = JSON.parse(match);
         console.log(match);
-        if (match['respuesta'] == true) {
+        if (match[0]['respuesta'] == true) {
             console.log("Acceso correcto");
         }
         else {
             console.log("Acceso denegado");
         }
         var respuestaMatch = {
-            'match' : match['respuesta']
+            'match' : match[0]['respuesta']
         };
+        console.log(respuestaMatch);
+        respuestaMatch = JSON.stringify(respuestaMatch);
+        console.log(respuestaMatch);
         $.post("http://192.168.1.81/getMatch",respuestaMatch, function(res) {
-            res = JSON.parse(res);
+            //res = JSON.parse(res);
             console.log(res);
         });
     });
