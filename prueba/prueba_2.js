@@ -27,7 +27,8 @@ $.get("http://192.168.1.81/sendRfid", function(lectId) {
             console.log("Acceso denegado");
         }
         var respuestaMatch = {
-            'match' : match[0]['respuesta']
+            'match' : match[0]['respuesta'],
+            'saludo' : "Hola"
         };
         console.log(respuestaMatch);
         respuestaMatch = JSON.stringify(respuestaMatch);
