@@ -14,7 +14,7 @@ session_start();
 <html>
   <head>
     <!-- <link rel="stylesheet" type="text/css" href="fonts/style.css"> --> 
-    <link rel="shortcut icon" type="image/x-icon" href="http://localhost/esp32/paginasBootstrap/gt_icon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../../imagenes/gt_icon.ico">
     <!-- caracteres-->
     <meta charset="utf-8">
    <title>User Gigaticket</title>
@@ -48,7 +48,7 @@ session_start();
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
       <!-- Navbar content -->
       <a class="navbar-brand" href="#">
-        <img src="http://localhost/esp32/paginasBootstrap/gt_icon.ico" width="30" height="30" class="d-inline-block align-top rounded img-fluid" alt="Gigaticket">
+        <img src="../../imagenes/gt_icon.ico" width="30" height="30" class="d-inline-block align-top rounded img-fluid" alt="Gigaticket">
         <strong> Accesos</strong>
       </a>
     
@@ -84,7 +84,7 @@ session_start();
         </ul>
       
         <a class="navbar-brand" href="#">
-          <img src="http://localhost/Prototipo/aragon.jpg" width="40" height="40" class="d-inline-block align-top rounded img-fluid mx-2" alt="fes aragon">
+          <img src="../../imagenes/aragon.jpg" width="40" height="40" class="d-inline-block align-top rounded img-fluid mx-2" alt="fes aragon">
         </a>
       </div>
     </nav>

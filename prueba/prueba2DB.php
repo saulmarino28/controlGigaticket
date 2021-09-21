@@ -78,7 +78,7 @@
 
 	            $datos[] = [
 	                
-	                'respuesta' => TRUE,
+	                'respuesta' => "TRUE",
 	                'IdC' => $dato['IdCliente'],
 	                'name' => $dato['Nombre'],
 	                'lastName' => $dato['Apellido'],

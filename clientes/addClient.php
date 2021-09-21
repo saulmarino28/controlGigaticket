@@ -110,88 +110,64 @@ session_start();
     </div>
    <form method="POST" action="#" class="needs-validation my-2" id="addClient" novalidate>
       <div class="row justify-content-center ">
-         <div class="col-sm-5">
+        <div class="col-sm-5">
           <div class="form-group">
-                     <label for="name">Nombre:</label>
-                     <input type="text" class="form-control" id="name" placeholder="Ingresa Nombre" name="name" required>
-                     <div class="valid-feedback">Válido.</div>
-                     <div class="invalid-feedback">EL nombre de usuario debe tener de 3-10 dígitos.</div>
-                  </div>                
-                  <div class="form-group">
-                     <label for="email">Email:</label>
-                     <input type="email" class="form-control" id="email" placeholder="Ingresa Email" name="email" required>
-                     <div class="valid-feedback">Válido.</div>
-                     <div class="invalid-feedback">Por favor escribe un correo válido.</div>
-                  </div>      
-          </div>
-          <div class="col-sm-5">
-           <div class="form-group">
-                      <label for="lastName">Apellido:</label>
-                      <input type="text" class="form-control" id="lastName" placeholder="Ingresa Apellido" name="lastName" required>
-                      <div class="valid-feedback">Válido.</div>
-                      <div class="invalid-feedback">El Apellido debe tener de 3-15 dígitos y solo contener letras.</div>
-                   </div>
-                   <div class="form-group">
-                   <label for="phone">Teléfono:</label>
-                   <input type="tel" class="form-control" id="phone" placeholder="Ingresa Teléfono" name="phone" required>
-                     <div class="valid-feedback">Válido.</div>
-                   <div class="invalid-feedback">El Teléfono debe tener de 10 dígitos y solo contener números.</div>
-                </div>
-
-          </div>
-
-          <div class="col-sm-5">
-          <div class="form-group">
-                     <label for="hab">Número de habitación:</label>
-                     <input type="number" class="form-control" id="hab" placeholder="" name="hab" required>
-                     <div class="valid-feedback">Válido.</div>
-                     <div class="invalid-feedback">El número de habitación debe tener de 3-10 dígitos.</div>
-                  </div> 
-                  <div class="form-group">
-                     <label for="fecha_i">Fecha de ingreso:</label>
-                     <input type="date" class="form-control" id="fecha_i" placeholder="Ingresa fecha" name="fecha_i" required>
-                     <div class="valid-feedback">Válido.</div>
-                     <div class="invalid-feedback">Ingresa una fecha correcta.</div>
-                  </div>
-                  <div class="form-group">
-                     <label for="hour_i">Hora ingreso:</label>
-                     <input type="time" class="form-control" id="hour_i" placeholder="Ingresa hora" name="hour_i" required>
-                     <div class="valid-feedback">Válido.</div>
-                     <div class="invalid-feedback">Ingresa una hora correcta.</div>
-                  </div>                
-                  
-                </div>
-          <div class="col-sm-5">
-
-          	<div class="form-group">
-                <label for="rfid">Número de tarjeta:</label>
-                <input type="text" class="form-control" id="rfid" placeholder="Ingresa tarjeta RFID" name="rfid" required>
-                <div class="valid-feedback">Válido.</div>
-                <div class="invalid-feedback">Por favor ingresa la terjeta RFID.</div>
+            <label for="name">Nombre:</label>
+            <input type="text" class="form-control" id="name" placeholder="Ingresa Nombre" name="name" required>
+            <div class="valid-feedback">Válido.</div>
+            <div class="invalid-feedback">
+              EL nombre de usuario debe tener de 3-10 dígitos
             </div>
-
+          </div>                
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Ingresa Email" name="email" required>
+            <div class="valid-feedback">Válido.</div>
+            <div class="invalid-feedback">
+              Por favor escribe un correo válido.
+            </div>
+          </div>      
+        </div>
+          <div class="col-sm-5">
             <div class="form-group">
-                     <label for="fecha_f">Fecha de egreso:</label>
-                     <input type="date" class="form-control" id="fecha_f" placeholder="4 dias, 1 mes" name="fecha_f"  required>
-                     <div class="valid-feedback">Válido.</div>
-                     <div class="invalid-feedback">Por favor escribe una fecha de egreso correcta.</div>
-                     <div id="wrongFecha" name="wrongFecha" class="text-danger invisible ">pero por favor ingresa una fecha de egreso mayor que la fecha de ingreso</div>
-                  </div>
-                  <div class="form-group">
-                     <label for="hour_f">Hora egreso:</label>
-                     <input type="time" class="form-control" id="hour_f" placeholder="Ingresa hora" name="hour_f" required>
-                     <div class="valid-feedback">Válido.</div>
-                     <div class="invalid-feedback">Ingresa una hora correcta.</div>
-                     <div id="wrongHora" name="wrongHora" class="text-danger invisible ">pero por favor ingresa una hora de egreso mayor que la hora de ingreso</div>
-                  </div>     
-                                         
+              <label for="lastName">Apellido:</label>
+              <input type="text" class="form-control" id="lastName" placeholder="Ingresa Apellido" name="lastName" required>
+              <div class="valid-feedback">
+                Válido.
+              </div>
+              <div class="invalid-feedback">
+                El Apellido debe tener de 3-15 dígitos y solo contener letras.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="phone">Teléfono:</label>
+              <input type="tel" class="form-control" id="phone" placeholder="Ingresa Teléfono" name="phone" required>
+              <div class="valid-feedback"> 
+                Válido.
+              </div>
+              <div class="invalid-feedback">
+                El Teléfono debe tener de 10 dígitos y solo contener números.
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-5">
+          	<div class="form-group">
+              <label for="rfid">Número de tarjeta:</label>
+              <input type="text" class="form-control" id="rfid" placeholder="Ingresa tarjeta RFID" name="rfid" required>
+              <div class="valid-feedback"> 
+                Válido.
+              </div>
+              <div class="invalid-feedback">
+                Por favor ingresa la terjeta RFID.
+              </div>
+            </div>                               
           </div>
        </div>
        <div class="row justify-content-center my-4  ">
           <div class="col-sm-5 text-center">               
                    <div class="form-group  ">
                       <button type="submit" class="btn btn-outline-info btn-lg btn-block  " id="addClient" name="enviar">
-                        Agregar Usuario
+                        Buscar espacio y agregar Usuario
                       </button>
                    </div> 
                </div>

@@ -35,7 +35,7 @@ $(document).ready(function(){
 $(document).on('click', '#btn-editA', function(){
     $("#editModal").modal("show");
     var atributo = {'id_access' : $(this).parent().parent().attr('id')};
-    console.log(atributo);
+    //console.log(atributo);
     $.post('../db/editAccessDB.php', atributo, function(respuesta){
       //console.log(respuesta);
       var data = JSON.parse(respuesta);
@@ -104,7 +104,7 @@ $('#formAccess').on('submit',function(){
         //console.log(datos);
         $.post('../db/searchSpaceEditDB.php', datos_enviar, function(espacio){
             espacio = JSON.parse(espacio);
-            console.log(espacio);
+            //console.log(espacio);
             //console.log("If false edita acceso otherwise it's unable");
             
             MostrarTablaAcceso(espacio, datos_enviar);
@@ -148,12 +148,12 @@ function obtenerDatos() {
     ///adecuar funcion. para editar acceso
     function MostrarTablaAcceso(espacio, datos_enviar) {
         //console.log(datos);
-        var estado, tableBody = "";
-        if (!(espacio[0]['resp'] == false)) {
+        var tableBody = "";
+        if ((espacio[0]['resp'] != false)) {
             console.log("ocupado");
             $('#editModal').modal('hide');
-            estado = true;
-            MostrarAlerta(estado);
+            NoAccess = true;
+            MostrarAlerta(NoAccess);
             tableBody += `<h3> Espacio ocupado</h3>`;
             tableBody += TableHead();
             tableBody += `<tbody class="text-center">`;
@@ -195,14 +195,14 @@ function obtenerDatos() {
 
                 if (res[0]['resp'] == true) {
                     //$('#editModal').modal('hide');
-                    estado = false;
-                    MostrarAlerta(estado);
+                    Access = false;
+                    MostrarAlerta(Access);
                     obtenerDatos();
                 }
                 else {
                     //$('#editModal').modal('hide');
-                    estado = "error";
-                    MostrarAlerta(estado);
+                    ErrorAccess = "error";
+                    MostrarAlerta(ErrorAccess);
                     
                 }
             });//cierre del post (para actualizar el acceso)
@@ -223,23 +223,10 @@ function obtenerDatos() {
                     </button>
                 </div>
             `;
-            
+            $('#alertEditAccess').empty().append(msj);
             
         }
-        if (estado == "error") {
-            msj +=`
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Error no se ha podido actualizar el acceso!</strong><br>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-          `;
-                        
-                        
-        }
-        else {
-            
+        else if (estado == true) {
             msj +=`
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <strong>¡Espacio ocupado! No puedes elegir este espacio  </strong>
@@ -248,9 +235,22 @@ function obtenerDatos() {
                     </button>
                 </div>
             `;
-            
+           $('#alertEditAccess').empty().append(msj);             
+                        
         }
-        $('#alertEditAccess').empty().append(msj);
+        else {
+            
+            msj +=`
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error no se ha podido actualizar el acceso!</strong><br>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+          `;
+            $('#alertEditAccess').empty().append(msj);
+        }
+        
     }
 
     function TableHead() {
