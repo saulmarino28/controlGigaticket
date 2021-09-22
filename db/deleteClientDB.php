@@ -1,10 +1,8 @@
 <?php 
-$id = $_POST['id'];
-   $conexion = @new mysqli('localhost', 'root', '', 'wifi access');
+    $id = $_POST['id'];
+    $conexion = @new mysqli('localhost', 'root', '', 'wifi access');
 
-    
     if($conexion->connect_errno){
-
         echo "No se pudo conectar (" . $conexion->connect_errno.  "): ". $conexion->connect_error;
     }
     else {
@@ -16,75 +14,52 @@ $id = $_POST['id'];
          // else {
          // echo("Conjunto de caracteres actual: ". $conexion->character_set_name()."<br>");
           // }
-
-
           // echo "conexion exito <br>";
-        $querys = " DELETE FROM clientes WHERE IdCliente = '$id' ";
-           
-
+        $querys = " DELETE FROM clientes WHERE IdCliente = '$id' ";  
         $consulta = $conexion->query($querys);
 
-        if($consulta == FALSE)
-            {
-             /*echo " error consulta <br>";
-             printf("Errormessage: %s\n", $conexion->error,"<br>");
-             printf("Errormessage: %s\n", $conexion->errno,"<br>");
-             printf("Affected rows (SELECT): %d\n", $conexion->affected_rows);
-             */
-            
-            
-              // ¡Oh, no hay filas! Unas veces es lo previsto, pero otras
-              // no. Nosotros decidimos. En este caso, ¿podría haber sido
-              // actor_id demasiado grande? 
-                //echo "Lo sentimos. No se pudo encontrar datos de los clientes, Inténtelo de nuevo.<br>";
-                //printf("Lineas afectadas (SELECT): %d\n", $conexion->affected_rows);
-                //$consulta->free();
-                $error_msg = $conexion->error;
-                $afRows_msg = $conexion->affected_rows;
-                $conexion->close();
-                $datos[] = [
-                
+        if($consulta == FALSE) {
+            /*echo " error consulta <br>";
+            printf("Errormessage: %s\n", $conexion->error,"<br>");
+            printf("Errormessage: %s\n", $conexion->errno,"<br>");
+            printf("Affected rows (SELECT): %d\n", $conexion->affected_rows);
+            */    
+            // ¡Oh, no hay filas! Unas veces es lo previsto, pero otras
+            // no. Nosotros decidimos. En este caso, ¿podría haber sido
+            // actor_id demasiado grande? 
+            //echo "Lo sentimos. No se pudo encontrar datos de los clientes, Inténtelo de nuevo.<br>";
+            //printf("Lineas afectadas (SELECT): %d\n", $conexion->affected_rows);
+            //$consulta->free();
+            $error_msg = $conexion->error;
+            $afRows_msg = $conexion->affected_rows;
+            $conexion->close();
+            $datos[] = [ 
                 'resp' => FALSE, 
                 'error_msg' => $error_msg,
                 'afRows_msg' => $afRows_msg
-
                 ];
-                echo json_encode($datos);
-
-              exit;
-              
-              }
-        else {
-            
-             // echo "exito consulta <br>";
-             
-             //}
-
-              //$consultas = $conexion->query($querys);
+            echo json_encode($datos);
+            exit;  
+        }
+        else {   
+            // echo "exito consulta <br>";
+            //}
+            //$consultas = $conexion->query($querys);
             $afRows_msg = $conexion->affected_rows;
-        
-        $datos[] = [
-                
+            $datos[] = [
                 'resp' => TRUE,
                 'afRows_msg' => $afRows_msg
-
                 ];
         }
-   // $consulta->free();
+    // $consulta->free();
     }
-
-
     $conexion->close();
-    
     //$datos = utf8_encode($datos);
-    
-
     //header('Content-Type: application/json');
     //echo json_encode($datos, JSON_FORCE_OBJECT);
     echo json_encode($datos);
      // json_encode($datos);
      //var_dump($datos);
-
      switch(json_last_error()) {
         case JSON_ERROR_NONE:
            // echo ' - Sin errores';
@@ -107,9 +82,7 @@ $id = $_POST['id'];
         default:
             echo ' - Error desconocido';
         break;
-    }
-    
- 
-   ?>
+    } 
+?>
 
   

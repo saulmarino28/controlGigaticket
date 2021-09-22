@@ -1,42 +1,28 @@
 $(document).ready(function(){
     obtenerDatos();
-   // hacerclic();
-
 
     $('#btn-actualizar').click(function(){  
-
-        obtenerDatos();  
-        
+        obtenerDatos();         
     });
     
     $("#myInput").on("keyup", function() {
-
         var value = $(this).val().toLowerCase();
         busqueda = { 
             'busqueda':value
         };
-
         $.post("../db/busqueda.php", busqueda, function(respuesta){
-
             //console.log(respuesta);
-            respuesta = JSON.parse(respuesta);
-                    
+            respuesta = JSON.parse(respuesta);         
             if (!(respuesta[0]['resp']==true)) {
-
                 MostrarTabla(respuesta);
-                $('#res').empty();
-                        
+                $('#res').empty();           
             } 
-            else {
-               
+            else {   
                 var res="";
-                res += `<h3>No hay resultados</h3>`;
-                    
+                res += `<h3>No hay resultados</h3>`;                    
                 $('#tabla1').empty();
-                $('#res').empty();
-                $('#res').append(res);
+                $('#res').empty().append(res);
             }
-
         }); //cierra la busqueda a la DB  
     }); //cierra funcion de myInput
 }); //cierra la la funcion principal
@@ -47,9 +33,9 @@ $(document).on('click', '#btn-edit', function(){
     var atributo = {'id_user' : $(this).parent().parent().attr('id')};
     console.log(atributo);
     $.post('../db/editClientDB.php', atributo, function(respuesta){
-      console.log(respuesta);
+      //console.log(respuesta);
       data = JSON.parse(respuesta);
-       console.log(data[0]['IdC']);
+       //console.log(data[0]['IdC']);
 
         $('#id_update').val(data[0]['IdC']);
         $('#name').val(data[0]['name']);
@@ -57,13 +43,11 @@ $(document).on('click', '#btn-edit', function(){
         $('#email').val(data[0]['email']);
         $('#phone').val(data[0]['phone']);
         $('#rfid').val(data[0]['rfid']);
-        $('#hab').val(data[0]['hab']);
+        $('#spaces').val(data[0]['espacio']);
         $('#fecha_i').val(data[0]['fecha_i']);
         $('#fecha_f').val(data[0]['fecha_f']);
         $('#hour_i').val(data[0]['hour_i']);
-        $('#hour_f').val(data[0]['hour_f']);
-
- 
+        $('#hour_f').val(data[0]['hour_f']); 
    });   
 });
 
@@ -75,11 +59,11 @@ $('#actualizar').on('click',function(){
             email = $('#email').val(),
             phone = $('#phone').val(),
             rfid = $('#rfid').val(),
-            hab = $('#hab').val(),
             fecha_i = $('#fecha_i').val(),
             fecha_f = $('#fecha_f').val(),
             hour_i = $('#hour_i').val(),
-            hour_f = $('#hour_f').val();
+            hour_f = $('#hour_f').val(),
+            nombre_espacio = $('#spaces option:selected').val();
 
        var datos_enviar = {
             'id' : id,
@@ -88,13 +72,13 @@ $('#actualizar').on('click',function(){
             'email': email,
             'phone': phone,
             'rfid': rfid,
-            'hab':hab,
+            'nombre_espacio': nombre_espacio,
             'fecha_i': fecha_i,
             'fecha_f': fecha_f,
             'hour_i': hour_i,
             'hour_f': hour_f
         };
-       // console.log(datos_enviar);
+       //console.log(datos_enviar);
        $.post('../db/updateClient.php', datos_enviar, function(respuesta){
         //console.log(respuesta);
         var res = JSON.parse(respuesta);
@@ -104,7 +88,7 @@ $('#actualizar').on('click',function(){
             var msj="";
             msj +=`
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Has actualizado un cliente!</strong> .
+                        <strong>Has actualizado un cliente!</strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -153,7 +137,7 @@ function obtenerDatos() {
                         <td >${respuesta[i]['email']}</td>
                         <td >${respuesta[i]['phone']}</td>
                         <td >${respuesta[i]['rfid']}</td>
-                        <td >${respuesta[i]['hab']}</td>
+                        <td >${respuesta[i]['espacio']}</td>
                         <td >${respuesta[i]['fecha_i']}</td>
                         <td >${respuesta[i]['fecha_f']}</td>
                         <td >${respuesta[i]['hour_i']}</td>

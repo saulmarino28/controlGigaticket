@@ -6,7 +6,7 @@
     $email = $_POST[ 'email'];
     $phone = $_POST['phone'];
     $rfid = $_POST['rfid'];
-    $hab = $_POST['hab'];
+    $nombre_espacio = $_POST['nombre_espacio'];
     $fecha_i = $_POST['fecha_i'];
     $fecha_f = $_POST['fecha_f'];
     $hour_i = $_POST['hour_i'];
@@ -33,9 +33,8 @@
 
 
           // echo "conexion exito <br>";
-        $querys = " UPDATE  clientes SET Nombre= '$name', Apellido='$lastName', Correo='$email', Telefono='$phone', Rfid='$rfid', Fecha_egreso='$fecha_f', Fecha_ingreso='$fecha_i', Hora_ingreso='$hour_i', Hora_egreso = '$hour_f', Habitacion='$hab'  WHERE IdCliente= '$id'  ";
+        $querys = " UPDATE  clientes SET Nombre = '$name', Apellido = '$lastName', Correo = '$email', Telefono = '$phone', Rfid = '$rfid', Fecha_egreso = '$fecha_f', Fecha_ingreso = '$fecha_i', Hora_ingreso = '$hour_i', Hora_egreso = '$hour_f', Espacio = '$nombre_espacio'  WHERE IdCliente = '$id'  ";
            
-
         $consulta = $conexion->query($querys);
 
         if($consulta == FALSE)
@@ -47,27 +46,18 @@
              $error_msg = $conexion->error;
              $afRows_msg = $conexion->affected_rows;
                 $respuesta[] = ['resp' => FALSE, 'error_msg' => $error_msg, 'afRows_msg' => $afRows_msg ]; //hubo error en la consulta e insercion de datos a la DB
-
                 echo json_encode($respuesta);     
                 exit();
              
             }
             
-        else {
-
-              
+        else {          
             $datos[]= ['resp'=> TRUE];
-
         }
-  
     }
 
-
-    $conexion->close();
-    
+    $conexion->close();    
     //$datos = utf8_encode($datos);
-    
-
     //header('Content-Type: application/json');
     //echo json_encode($datos, JSON_FORCE_OBJECT);
     echo json_encode($datos);
@@ -97,8 +87,6 @@
             echo ' - Error desconocido';
         break;
     }
-    
- 
-   ?>
+?>
 
   

@@ -56,7 +56,6 @@ $(document).on('click', '#btn-access', function(){
 
 //funcion para la buscar un espacio
 $('#search').on('submit',function(){
-
 	var name = $('#name').val(),
      	fecha_i = $('#fecha_i').val(),
      	fecha_f = $('#fecha_f').val(),
@@ -65,7 +64,6 @@ $('#search').on('submit',function(){
      	nombre_espacio =  $('#spaces option:selected').val();
 
     if (fecha_i > fecha_f ) {
-
      	console.log("error wrong info");
      	$('#wrongFecha').removeClass("invisible").addClass("visible");
      	$('#wrongHora').removeClass("visible").addClass("invisible");
@@ -110,7 +108,7 @@ $(document).on('click', '#btn-asignarAcceso', function() {
 	 		
 	var nuevoHorario = {
 		'name' : $(this).parents("tr").find("td")[1].innerHTML,
-		'espacio' : $(this).parents("tr").find("td")[2].innerHTML,
+		'nombre_espacio' : $(this).parents("tr").find("td")[2].innerHTML,
 		'fecha_i' : $(this).parents("tr").find("td")[3].innerHTML,
 		'fecha_f' : $(this).parents("tr").find("td")[4].innerHTML,
 		'hora_i' : $(this).parents("tr").find("td")[5].innerHTML,
@@ -232,14 +230,11 @@ $(document).on('click', '#btn-asignarAcceso', function() {
 		    MostrarAlerta(estado);
 		    	tableBody += TableHead();
                 tableBody +=`
-
-                	
 		              <tbody class="text-center">
 		              	<tr id="${datos['name']}">
 	                        <td class="bg-primary" >?</td>
 	                        <td id="${datos['name']}">${datos['name']}</td>
 	                        <td >${datos['nombre_espacio']}</td>
-	                        
 	                        <td >${datos['fecha_i']}</td>
 	                        <td >${datos['fecha_f']}</td>
 	                        <td >${datos['hora_i']}</td>
@@ -248,7 +243,6 @@ $(document).on('click', '#btn-asignarAcceso', function() {
 	                    </tr>       
 		              </tbody>          
 		            </table>
-
                 `;
             
             $('#tableAccess').empty().append(tableBody);
@@ -304,9 +298,9 @@ $(document).on('click', '#btn-asignarAcceso', function() {
 		         	</tr>
 		    	</thead>
 		`;
-		return tableHead; 
-		
+		return tableHead; 	
 	}
+	
 	function DisableButton() {
 		var prueba = document.getElementById('btn-asignarAcceso'); //.setAttribute("disabled",true);
 		prueba.disabled = true;

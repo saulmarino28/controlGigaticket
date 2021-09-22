@@ -15,24 +15,23 @@
 <html>
   <head>
     <!-- <link rel="stylesheet" type="text/css" href="fonts/style.css"> -->	
-    <link rel="shortcut icon" type="image/x-icon" href="http://localhost/esp32/paginasBootstrap/gt_icon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../../imagenes/gt_icon.ico">
     <!-- caracteres-->
     <meta charset="utf-8">
-   <title>User Gigaticket</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-       
+    <title>User Gigaticket</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">   
   </head>
 
   <style type="text/css">
     *{
-    padding: 0px;
-    margin: 0px;
-      }
-      .door, .card , .modal-content {
+      padding: 0px;
+      margin: 0px;
+    }
+    .door, .card , .modal-content {
       border: 8px solid #008080;
-       box-shadow: #CCCCCC 3px 3px 8px;
+      box-shadow: #CCCCCC 3px 3px 8px;
     }
     body, .card {
       background: -moz-radial-gradient(center,#3E473A 10%, #006999 90% );
@@ -41,7 +40,7 @@
        /*background: linear-gradient(30deg, #111f11 , #006699 );
        */
       color: #ffffff; 
-       font-family: cursive;
+      font-family: cursive;
     } 
   </style>
 
@@ -50,43 +49,51 @@
   	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
       <!-- Navbar content -->
       <a class="navbar-brand" href="#">
-        <img src="http://localhost/esp32/paginasBootstrap/gt_icon.ico" width="30" height="30" class="d-inline-block align-top rounded img-fluid" alt="Gigaticket">
+        <img src="../../imagenes/gt_icon.ico" width="30" height="30" class="d-inline-block align-top rounded img-fluid" alt="Gigaticket">
         <strong> Accesos</strong>
       </a>
-    
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
-    	
         <ul class="navbar-nav mr-auto ">
           <li class="nav-item active">
-            <a class="nav-link" href="#"><strong>Acceso a Usuario</strong> <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">
+              <strong>Acceso a Usuario</strong> 
+              <span class="sr-only">(current)</span>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../accesos.php"><strong>Atrás</strong></a>
+            <a class="nav-link" href="../accesos.php">
+              <strong>Atrás</strong>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../index.php"><strong>Ir a inicio</strong></a>
+            <a class="nav-link" href="../index.php">
+              <strong>Ir a inicio</strong>
+            </a>
           </li>
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <strong> Menu</strong>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="../menu/mi_perfil.php">Mi perfil</a>
+              <a class="dropdown-item" href="../menu/mi_perfil.php">
+                Mi perfil
+              </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="../sesiones/cerrarSesionUGT.php">Cerrar Sesión</a>
+              <a class="dropdown-item" href="../sesiones/cerrarSesionUGT.php">
+                Cerrar Sesión
+              </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="../accesos.php">Atrás</a>
+              <a class="dropdown-item" href="../accesos.php">
+                Atrás
+              </a>
             </div>
           </li>
         </ul>
-      
         <a class="navbar-brand" href="#">
-          <img src="http://localhost/Prototipo/aragon.jpg" width="40" height="40" class="d-inline-block align-top rounded img-fluid mx-2" alt="fes aragon">
+          <img src="../../imagenes/aragon.jpg" width="40" height="40" class="d-inline-block align-top rounded img-fluid mx-2" alt="fes aragon">
         </a>
       </div>
     </nav>
@@ -100,7 +107,6 @@
 
     <!-- Start Container Access Client-->
     <div class="container pt-5 ">
-
       <!--Modal  start -->
       <div class="container text-dark m-2">
         <!-- Modal -->
@@ -160,17 +166,19 @@
                         <select class="form-control " id="spaces" name="spaces">
                           
                         </select>
-                        <div class="valid-feedback">Válido.</div>
-                        <div class="invalid-feedback">Ingresa un espacio válido.</div>
+                        <div class="valid-feedback">
+                          Válido.
+                        </div>
+                        <div class="invalid-feedback">
+                          Ingresa un espacio válido.
+                        </div>
                       </div>
                       <div class="form-group mx-5 my-4">
-                        
                         <button type="submit" class="btn btn-outline-warning btn-lg d-inline-block " name="enviar" id="buscar">
                           Buscar 
                         </button>
                       </div>               
                     </div>
-                    
                   </div> 
                 </form>
               </div>

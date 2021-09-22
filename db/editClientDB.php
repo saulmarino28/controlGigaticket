@@ -69,7 +69,7 @@
                 'email' => $dato['Correo'],
                 'phone' => $dato['Telefono'],
                 'rfid' => $dato['Rfid'],
-                'hab' => $dato['Habitacion'],
+                'espacio' => $dato['Espacio'],
                 'fecha_i' => $dato['Fecha_ingreso'],
                 'fecha_f' => $dato['Fecha_egreso'],
                 'hour_i' => $dato['Hora_ingreso'],
