@@ -3,7 +3,7 @@
 	if($_POST) {
 	    // error_reporting(0);
 	    $name=$_POST["name"];
-	    $espacio =$_POST["espacio"];
+	    $espacio =$_POST["nombre_espacio"];
 	    $fecha_i=$_POST["fecha_i"];
 	    $fecha_f=$_POST["fecha_f"];
 	    $hour_i = $_POST["hora_i"];

@@ -7,11 +7,11 @@
 	    $email=$_POST["email"];
 	    $phone=$_POST["phone"];
 	    $rfid=$_POST["rfid"];
-	    $hab = (int)$_POST["hab"];
+	    $space = $_POST["nombre_espacio"];
 	    $fecha_i=$_POST["fecha_i"];
 	    $fecha_f=$_POST["fecha_f"];
-	    $hour_i = $_POST["hour_i"];
-	    $hour_f = $_POST["hour_f"];
+	    $hour_i = $_POST["hora_i"];
+	    $hour_f = $_POST["hora_f"];
 
 	    $conexion = @new mysqli('localhost', 'root', '', 'wifi access');
 	    if($conexion->connect_errno){
@@ -31,7 +31,7 @@
 	        	exit();
 	        }
          
-	        $querys = "INSERT INTO clientes (Nombre, Apellido, Correo, Telefono, Rfid, Habitacion, Fecha_ingreso, Fecha_egreso, Hora_ingreso, Hora_egreso) values ('$name', '$lastName','$email', '$phone', '$rfid', '$hab', '$fecha_i', '$fecha_f', '$hour_i', '$hour_f')";
+	        $querys = "INSERT INTO clientes (Nombre, Apellido, Correo, Telefono, Rfid, Espacio, Fecha_ingreso, Fecha_egreso, Hora_ingreso, Hora_egreso) values ('$name', '$lastName','$email', '$phone', '$rfid', '$space', '$fecha_i', '$fecha_f', '$hour_i', '$hour_f')";
 
 	        if($conexion->query($querys) == FALSE) {
 	          /* 	echo " error consulta <br>";
