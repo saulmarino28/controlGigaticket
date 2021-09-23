@@ -189,8 +189,7 @@ session_start();
     <script>
     // Disable form submissions if there are invalid fields
 
-    </script>
-    <!-- Finish Container-->  
+    </script>  
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
